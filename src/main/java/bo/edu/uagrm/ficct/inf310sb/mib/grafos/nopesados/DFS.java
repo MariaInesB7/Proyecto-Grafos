@@ -63,4 +63,8 @@ public class DFS {
     public Iterable <Integer> elRecorrido(){
     return recorrido;
     }  
+    
+    public boolean hayCaminoATodos(){
+        return controlMarcados.estanTodosMarcados();
+    }
 }

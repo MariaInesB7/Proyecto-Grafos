@@ -15,14 +15,19 @@ import java.util.Queue;
  * @author HP 240 G5
  */
 public class BFS {
-    private List<Boolean> marcados;
+   // private List<Boolean> marcados;
     private List<Integer> recorrido;
     private Grafo grafo;
+    private UtilsRecorridos controlMarcados;
     public BFS (Grafo unGrafo, int posVerticePartida){
         this.grafo= unGrafo;
-        desmarcarTodos();
+        recorrido= new ArrayList<>();
+        controlMarcados= new UtilsRecorridos(grafo.cantidadDeVertices()); 
+        controlMarcados.desmarcarTodos();
         ejecutarBFS(posVerticePartida);
     }
+    
+    /*
     private void desmarcarTodos(){
      marcados = new ArrayList<>();
      recorrido = new ArrayList<>();
@@ -33,29 +38,33 @@ public class BFS {
     private void marcarVertice(int posVertice){
         marcados.set(posVertice, Boolean.TRUE);
     }
-    
-    private void ejecutarBFS(int posVertice){
+    */
+    public void ejecutarBFS(int posVertice){
     Queue<Integer> cola = new LinkedList<>();
     cola.offer(posVertice);
+    controlMarcados.marcarVertice(posVertice);
     do{
         int posVerticeEnTurno= cola.poll();
         recorrido.add(posVerticeEnTurno);
         Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
         for(Integer posVerticeAdyacente: adyacentesEnTurno){
-            if(!estaMarcado(posVerticeAdyacente)){
+            int z= posVerticeAdyacente;
+            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
             cola.add(posVerticeAdyacente);
-            marcarVertice(posVerticeAdyacente);
+            controlMarcados.marcarVertice(posVerticeAdyacente);
             }
         }
     }while(!cola.isEmpty());
     }
+    
+    /*
     private boolean estaMarcado(int posVertice){     
         return marcados.get(posVertice);
     }
-    
+    */
     public boolean hayCaminoA(int posVertice){
         grafo.validarVertice(posVertice);
-        return estaMarcado(posVertice);
+        return controlMarcados.estaMarcado(posVertice);
     }
     
     public Iterable <Integer> elRecorrido(){

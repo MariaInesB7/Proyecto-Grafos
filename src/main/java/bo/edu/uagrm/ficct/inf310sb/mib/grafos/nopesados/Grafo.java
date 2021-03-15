@@ -63,7 +63,7 @@ public class Grafo {
 		adyacenciasDelOrigen.add(posVerticeDestino);
                 //Collections.sort(adyacenciasDelOrigen); para ordenar
 		if (posVerticeOrigen!=posVerticeDestino) {
-			List<Integer>adyacenciasDelDestino= this.listasDeAdyacencias.get(posVerticeOrigen);
+			List<Integer>adyacenciasDelDestino= this.listasDeAdyacencias.get(posVerticeDestino);
 			adyacenciasDelDestino.add(posVerticeOrigen);
 		}
 	}
@@ -97,6 +97,14 @@ public class Grafo {
         //hacer eliminar arista
         public void eliminarArista(int posVerticeOrigen, int posVerticeDestino){
         //hacer
+        if (existeAdyacencia(posVerticeOrigen,  posVerticeDestino)){
+         List<Integer> adyacenciasDelOrigen= this.listasDeAdyacencias.get(posVerticeOrigen);
+         List<Integer> adyacenciasDelDestino= this.listasDeAdyacencias.get(posVerticeDestino);
+        
+         adyacenciasDelOrigen.remove(adyacenciasDelOrigen.lastIndexOf(posVerticeDestino));
+         adyacenciasDelDestino.remove(adyacenciasDelDestino.lastIndexOf(posVerticeOrigen));
+        }
+      
         }
         
         public int gradoDeVertice(int posDeVertice){
