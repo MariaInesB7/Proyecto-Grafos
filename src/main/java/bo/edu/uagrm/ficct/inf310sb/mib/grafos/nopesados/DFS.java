@@ -18,7 +18,7 @@ public class DFS {
      // private List<Boolean> marcados;
     private List<Integer> recorrido;
     private Grafo grafo;
-    private UtilsRecorridos controlMarcados;
+    protected UtilsRecorridos controlMarcados;
     public DFS (Grafo unGrafo, int posVerticePartida){
         this.grafo= unGrafo;
         grafo.validarVertice(posVerticePartida);
@@ -29,7 +29,7 @@ public class DFS {
        
     }
     /*
-    private void desmarcarTodos(){
+    private void desmarcar Todos(){
      marcados = new ArrayList<>();
      recorrido = new ArrayList<>();
      for (int i=0; i<grafo.cantidadDeVertices();i++){
@@ -68,7 +68,7 @@ public class DFS {
         return controlMarcados.estanTodosMarcados();
     }
     
-    public int cantDeIslas(Grafo grafo){
+   /* public int cantDeIslas(Grafo grafo){
            // boolean estaTodoMarcado= false;
           //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
          
@@ -96,6 +96,51 @@ public class DFS {
         }
         }
        return VerticeDeProceso;
-       } 
+       } */
+       
+       /*public int cantIslasDi(Grafo grafo){
+       int cantIslas=0;
+       int verticeDeProceso=0;
+       int c= grafo.cantidadDeVertices();
+     //  for(int i= verticeDeProceso; i<grafo.cantidadDeVertices();i++)
+       while(verticeDeProceso<grafo.cantidadDeVertices()){
+       this.continuarDFS(verticeDeProceso);
+       if(controlMarcados.estanTodosMarcados()){
+        cantIslas++;
+        return cantIslas;
+       //verticeDeProceso++;
+       
+       }
+         verticeDeProceso=verticeNoMarcadoConAdyacenteMarcado
+                                            (grafo, verticeDeProceso);
+          int y=verticeDeProceso;
+        if(verticeDeProceso<0){
+        cantIslas++;
+        verticeDeProceso= definirVerticeNoMarcado(grafo, 0);
+        int z=verticeDeProceso;
+        }
+
+       }
+       return cantIslas;
+       }
+
+    private int verticeNoMarcadoConAdyacenteMarcado(Grafo unGrafo,int VerticeDeProceso) {
+        boolean adyacenteNoMarcado= false;
+      while( VerticeDeProceso<unGrafo.cantidadDeVertices()) {
+        if (!controlMarcados.estaMarcado(VerticeDeProceso)){
+            Iterable<Integer> adyacentesEnTurno= unGrafo.adyacentesDeVertice(VerticeDeProceso);
+            
+        for(Integer posVerticeAdyacente: adyacentesEnTurno){
+           if(controlMarcados.estaMarcado(posVerticeAdyacente)){
+               return VerticeDeProceso;
+           }
+        }
+        
+        }
+        VerticeDeProceso++;
+        }
+       return -1;// no econtro verticeNoMarcado
+    }
+       */
     
 }

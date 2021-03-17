@@ -24,7 +24,7 @@ public class BFS {
         recorrido= new ArrayList<>();
         controlMarcados= new UtilsRecorridos(grafo.cantidadDeVertices()); 
         controlMarcados.desmarcarTodos();
-        ejecutarBFS(posVerticePartida);
+       ejecutarBFS(posVerticePartida);
     }
     
     /*

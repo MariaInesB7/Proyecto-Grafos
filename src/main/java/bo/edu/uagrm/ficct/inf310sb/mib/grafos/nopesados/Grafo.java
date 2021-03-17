@@ -9,7 +9,7 @@ import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionNroVerticesIn
 public class Grafo {
 	//protected int cantAristas; // si se quiere calcular quitar la variable y calcular cada vez
 	protected List<List<Integer>> listasDeAdyacencias;
-	
+	//private UtilsRecorridos utilsRecorridos;
 	public Grafo() {
 		this.listasDeAdyacencias= new ArrayList<>();
             
@@ -130,37 +130,5 @@ public class Grafo {
         Iterable<Integer> recorridoDFS= recorrido.elRecorrido();
         return recorridoDFS;
         }
-       /*
         
-        public int cantDeIslas(){
-           // boolean estaTodoMarcado= false;
-          //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
-         
-        int cantIslas=0;
-         int verticeDeProceso=0; 
-       
-       while(!controlMarcados.estanTodosMarcados()){
-           recorridoDFS(this, verticeDeProceso);
-        cantIslas++;
-        if(controlMarcados.estanTodosMarcados()){
-        return cantIslas;
-        }
-        verticeDeProceso= definirVerticeNoMarcado(this);
-        }
-        return cantIslas;
-        }
-       private int definirVerticeNoMarcado(Grafo unGrafo){
-          int VerticeDeProceso=0;
-         //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
-        
-       while( VerticeDeProceso<unGrafo.cantidadDeVertices()) {
-        if (controlMarcados.estaMarcado(VerticeDeProceso)==true){
-            VerticeDeProceso++;
-        }else{
-        break;
-        }
-        }
-       return VerticeDeProceso;
-       } 
-      */
 	}
