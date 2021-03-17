@@ -33,13 +33,25 @@ public class UtilsRecorridos {
       public boolean estaMarcado(int posVertice){
         return marcados.get(posVertice);
     }
-    public boolean estanTodosMarcados(){
+     public boolean estanTodosMarcados(){
         for (Boolean marcado: this.marcados){
         if(!marcado){
             return false;
         }
         }
         return true;
+      /* int a= this.nroVertices;
+         for (int i=0; i<this.nroVertices-1;i++ ){
+             boolean b= marcados.get(i);
+        if(!marcados.get(i)){
+            return false;
+        }
+        }
+        return true;*/
     }  
+    public Iterable <Boolean> marcados(){
+    return marcados;
+    }
+    
     
 }

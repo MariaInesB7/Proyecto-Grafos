@@ -64,8 +64,26 @@ public class Digrafo extends Grafo {
 
     @Override
     public void eliminarArista(int posVerticeOrigen, int posVerticeDestino) {
-     
+     if (existeAdyacencia(posVerticeOrigen,  posVerticeDestino)){
+         List<Integer> adyacenciasDelOrigen= this.listasDeAdyacencias.get(posVerticeOrigen);
+         
+        
+         adyacenciasDelOrigen.remove(adyacenciasDelOrigen.lastIndexOf(posVerticeDestino));
+        
+        }
     }
+    
+    public Iterable recorridoBFS(Digrafo unGrafo, int posVertice){
+            BFS recorrido= new BFS(unGrafo, posVertice);   
+        Iterable<Integer> recorridoBFS= recorrido.elRecorrido();
+        return recorridoBFS;
+        }
+        public Iterable recorridoDFS(Digrafo unGrafo, int posVertice){
+            DFS recorrido= new DFS(unGrafo, posVertice);
+            
+        Iterable<Integer> recorridoDFS= recorrido.elRecorrido();
+        return recorridoDFS;
+        }
     
     
 }

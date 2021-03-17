@@ -67,4 +67,35 @@ public class DFS {
     public boolean hayCaminoATodos(){
         return controlMarcados.estanTodosMarcados();
     }
+    
+    public int cantDeIslas(Grafo grafo){
+           // boolean estaTodoMarcado= false;
+          //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
+         
+        int cantIslas=0;
+         int verticeDeProceso=0; 
+       
+       while(!controlMarcados.estanTodosMarcados()){
+           this.continuarDFS(verticeDeProceso);
+        cantIslas++;
+        if(controlMarcados.estanTodosMarcados()){
+        return cantIslas;
+        }
+        verticeDeProceso= definirVerticeNoMarcado(grafo,verticeDeProceso);
+        }
+        return cantIslas;
+        }
+       private int definirVerticeNoMarcado(Grafo unGrafo,int VerticeDeProceso){
+         
+         //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
+       while( VerticeDeProceso<unGrafo.cantidadDeVertices()) {
+        if (controlMarcados.estaMarcado(VerticeDeProceso)==true){
+            VerticeDeProceso++;
+        }else{
+        break;
+        }
+        }
+       return VerticeDeProceso;
+       } 
+    
 }

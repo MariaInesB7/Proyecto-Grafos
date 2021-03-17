@@ -12,6 +12,7 @@ public class Grafo {
 	
 	public Grafo() {
 		this.listasDeAdyacencias= new ArrayList<>();
+            
 		//this.cantAristas=0;
 	}
 	public Grafo(int nroDeVerticesInicial) throws ExcepcionNroVerticesInvalido   {
@@ -118,4 +119,48 @@ public class Grafo {
         Iterable<Integer> it = adyacenciasDelVertice;
         return it;
         }
+        public Iterable recorridoBFS(Grafo unGrafo, int posVertice){
+            BFS recorrido= new BFS(unGrafo, posVertice);   
+        Iterable<Integer> recorridoBFS= recorrido.elRecorrido();
+        return recorridoBFS;
+        }
+        public Iterable recorridoDFS(Grafo unGrafo, int posVertice){
+            DFS recorrido= new DFS(unGrafo, posVertice);
+            
+        Iterable<Integer> recorridoDFS= recorrido.elRecorrido();
+        return recorridoDFS;
+        }
+       /*
+        
+        public int cantDeIslas(){
+           // boolean estaTodoMarcado= false;
+          //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
+         
+        int cantIslas=0;
+         int verticeDeProceso=0; 
+       
+       while(!controlMarcados.estanTodosMarcados()){
+           recorridoDFS(this, verticeDeProceso);
+        cantIslas++;
+        if(controlMarcados.estanTodosMarcados()){
+        return cantIslas;
+        }
+        verticeDeProceso= definirVerticeNoMarcado(this);
+        }
+        return cantIslas;
+        }
+       private int definirVerticeNoMarcado(Grafo unGrafo){
+          int VerticeDeProceso=0;
+         //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
+        
+       while( VerticeDeProceso<unGrafo.cantidadDeVertices()) {
+        if (controlMarcados.estaMarcado(VerticeDeProceso)==true){
+            VerticeDeProceso++;
+        }else{
+        break;
+        }
+        }
+       return VerticeDeProceso;
+       } 
+      */
 	}
