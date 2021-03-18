@@ -8,7 +8,10 @@ package bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados;
 
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionNroVerticesInvalido;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionNroVerticesInvalido_1;
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.*;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.*;
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.pesado.*;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +21,8 @@ import java.util.Arrays;
  */
 public class Prueba {
     public static void main(String[] argumentos) 
-            throws ExcepcionNroVerticesInvalido_1, ExcepcionNroVerticesInvalido {
+            throws ExcepcionNroVerticesInvalido_1, ExcepcionNroVerticesInvalido,ExcepcionAristaYaExiste
+        {
         
        
         
@@ -136,9 +140,22 @@ public class Prueba {
       */
       BFS bfs = new BFS(digrafo3, 0);
       System.out.println("16.Caminos:"+ bfs.caminosAVertice(digrafo3, 1));
-      System.out.println("16.Caminos:");
+      
+      
+      
+      GrafoPesado grafoP=new GrafoPesado(3);
+    
+        grafoP.insertarArista(0,1,5);
+        System.out.println(grafoP.listaDeAdyacencias);
+        List<AdyacenteConPeso> listasDeAdy= grafoP.listaDeAdyacencias.get(0);
+        List<AdyacenteConPeso> listasDeAdy2= grafoP.listaDeAdyacencias.get(1);
+        List<AdyacenteConPeso> listasDeAdy3= grafoP.listaDeAdyacencias.get(0);
+        //System.out.println("h"+ listasDeAdy.get(0));
+       
+        
+          AdyacenteConPeso  listaPeso= listasDeAdy.get(0);
+           System.out.println( listaPeso.getPeso());
+          //listaPeso.getPeso();
     }
-    
-
-    
+  
 }
