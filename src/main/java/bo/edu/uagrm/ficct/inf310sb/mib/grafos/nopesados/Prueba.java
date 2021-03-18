@@ -66,6 +66,13 @@ public class Prueba {
        digrafo2.insertarArista(2, 3);
        digrafo2.insertarArista(3, 1);
        
+       Digrafo digrafo3= new Digrafo(5);
+       digrafo3.insertarArista(0, 1);
+       digrafo3.insertarArista(0, 3);
+       digrafo3.insertarArista(1, 4);
+       digrafo3.insertarArista(2, 1);
+       digrafo3.insertarArista(2, 4);
+       
        MetodosPracticoDigrafo digrafo= new MetodosPracticoDigrafo();
        /*System.out.println("CantDeIslas Digrafo: "+ digrafo.cantIslasDi(digrafo1));
        System.out.println("BFS digarfo"+ digrafo1.recorridoBFS(digrafo1, 0));
@@ -83,7 +90,7 @@ public class Prueba {
     //Estudiante: Maria Ines Barrios Barrientos         Registro: 218006403
     /*1. Para un grafo dirigido implementar un método o clase que sea capas de retornar los 
     componentes de las islas que existen en dicho digrafo */
-   // System.out.println("1. Componentes de las islas: " + digrafo.componentesDeIslasDigrafo(digrafo1));
+    System.out.println("1. Componentes de las islas: " + digrafo.componentesDeIslasDigrafo(digrafo1));
     /*. 2.Para un grafo dirigido implementar un algoritmo para encontrar si el grafo dirigido tiene 
         ciclos*/
     System.out.println("2. Tiene ciclo: "+ digrafo.hayCiclo(digrafo1) );
@@ -116,6 +123,19 @@ public class Prueba {
         los caminos*/
       System.out.println("8.Floyd Warshall"); 
       digrafo.algoritmoFloydWarshall(digrafo2);
+      
+      /*9. Para un grafo dirigido implementar un algoritmo que retorne cuántas componentes 
+    fuertemente conexas hay en dicho grafo. Definimos formalmente un componente 
+    fuertemente conectado, C, de un grafo G, como el mayor subconjunto de vértices C (que es 
+    un subconjunto de los vértices del grafo G) tal que para cada pareja de vértices v,w
+    pertenecen a C tenemos una ruta desde v hasta w y una ruta desde w hasta v.
+    */
+      
+      /*16. Para un grafo dirigido solo usando como base la lógica de un recorrido (dfs o bfs) encuentre 
+        desde que vértices se puede llegar a un vértice a
+      */
+      BFS bfs = new BFS(digrafo3, 0);
+      System.out.println("16.Caminos:"+ bfs.caminosAVertice(digrafo3, 1));
     }
     
 

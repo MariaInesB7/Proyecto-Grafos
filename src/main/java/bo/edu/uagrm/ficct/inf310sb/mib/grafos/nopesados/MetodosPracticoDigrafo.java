@@ -6,7 +6,9 @@
 package bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  *
@@ -14,7 +16,10 @@ import java.util.List;
  */
 public class MetodosPracticoDigrafo extends Digrafo {
     private DFS dfs;
+    private UtilsRecorridos controlMarcados;
+    //
     public MetodosPracticoDigrafo(){
+         UtilsRecorridos controlMarcados;
     }
      
        private int definirVerticeNoMarcado(Digrafo unGrafo,int verticeDeProceso){
@@ -75,6 +80,7 @@ public class MetodosPracticoDigrafo extends Digrafo {
         int cantIslas=this.cantIslasDi(grafo);
        int verticeDeProceso=0;
        int numIsla=0;
+       List<Integer> componentesYaMarcados= new ArrayList<>();
         List<List<Integer>> listaIslas= new ArrayList<>(); 
         for (int i=0; i<cantIslas; i++ ){
         listaIslas.add(new ArrayList<>());
@@ -84,31 +90,37 @@ public class MetodosPracticoDigrafo extends Digrafo {
        while(verticeDeProceso<grafo.cantidadDeVertices()){
        dfs.continuarDFS(verticeDeProceso);
         
+         verticesDeLasIslas(numIsla, listaIslas,grafo.cantidadDeVertices(),componentesYaMarcados);
        if(dfs.controlMarcados.estanTodosMarcados()){
-        numIsla++;
-        verticesDeLasIslas(numIsla,listaIslas,grafo.cantidadDeVertices());
+       // numIsla++;
+        //verticesDeLasIslas(numIsla,listaIslas,grafo.cantidadDeVertices());
        //verticeDeProceso++;
-       
+       //verticesDeLasIslas(numIsla, listaIslas.get(numIsla),grafo.cantidadDeVertices());
+       return listaIslas;
        }
-         verticeDeProceso=verticeNoMarcadoConAdyacenteMarcado
-                                            (grafo, verticeDeProceso);
-       if(verticeDeProceso>0){
-           dfs.controlMarcados.marcarVertice(verticeDeProceso);
-        verticesDeLasIslas(numIsla, listaIslas,grafo.cantidadDeVertices());
-       }
+      
+        verticeDeProceso=verticeNoMarcadoConAdyacenteMarcado
+                                            (grafo, verticeDeProceso); 
           if(verticeDeProceso<0){
         numIsla++;
         verticeDeProceso= definirVerticeNoMarcado(grafo, 0);
-        }
+        
+        }else{
+          List<Integer>listaABorrar= listaIslas.get(numIsla);
+          listaABorrar.clear();
+           componentesYaMarcados.clear();   
+          }
        }
        return listaIslas;
     }
       public void verticesDeLasIslas(int numIslas,List<List<Integer>>islas,
-                                          int cantVertices ){
+                                          int cantVertices,List<Integer> componentesYaMarcados ){
       List<Integer> componenteIsla=  islas.get(numIslas);
+    
         for(int i=0;i< cantVertices; i++ ){
-            if (dfs.controlMarcados.estaMarcado(i)){
+            if (dfs.controlMarcados.estaMarcado(i)&& componentesYaMarcados.indexOf(i)<0){
         componenteIsla.add(i);
+        componentesYaMarcados.add(i);
             }
         }
       }
@@ -184,4 +196,26 @@ public class MetodosPracticoDigrafo extends Digrafo {
      }
      this.imprimirMatriz(matrizDigrafo, columnas);
      }
+     
+     
+     /*
+       public List<Integer> caminosAVertice(int posVertice){ 
+         UtilsRecorridos controlMarcados= new UtilsRecorridos(this.cantidadDeVertices());
+         Queue<Integer> cola = new LinkedList<>();
+        cola.offer(posVertice);
+        controlMarcados.marcarVertice(posVertice);
+    do{
+        int posVerticeEnTurno= cola.poll();
+        recorrido.add(posVerticeEnTurno);
+        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
+        for(Integer posVerticeAdyacente: adyacentesEnTurno){
+            int z= posVerticeAdyacente;
+            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
+            cola.add(posVerticeAdyacente);
+            controlMarcados.marcarVertice(posVerticeAdyacente);
+            }
+        }
+    }while(!cola.isEmpty());
+     }
+     */
 }

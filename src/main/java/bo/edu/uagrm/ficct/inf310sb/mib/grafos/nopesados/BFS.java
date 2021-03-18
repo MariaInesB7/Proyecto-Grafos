@@ -70,4 +70,37 @@ public class BFS {
     public Iterable <Integer> elRecorrido(){
     return recorrido;
     }
+    
+    public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
+        controlMarcados.desmarcarTodos();
+       // List<List<Integer>> listasDeAdyacencias= grafo.listasDeAdyacencias;
+         //controlMarcados= new UtilsRecorridos(grafo.cantidadDeVertices());
+         int verticeIni=0;
+         Queue<Integer> cola = new LinkedList<>();
+         List<Integer> vertices= new ArrayList<>();
+        cola.offer(verticeIni);
+        controlMarcados.marcarVertice(verticeIni);
+        
+    do{
+        int posVerticeEnTurno= cola.poll();
+        //vertices.add(posVerticeEnTurno);
+        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
+        List<Integer> adyacentesVertice= grafo.listasDeAdyacencias.get(posVerticeEnTurno);
+        int z=0;
+        for(Integer posVerticeAdyacente: adyacentesEnTurno){
+            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
+            cola.add(posVerticeAdyacente);
+            controlMarcados.marcarVertice(posVerticeAdyacente);
+            }
+            if(posVertice==adyacentesVertice.get(z)|| posVertice==posVerticeEnTurno ){
+                 vertices.add(posVerticeEnTurno);
+             }
+             z++;
+        }
+       
+    }while(!cola.isEmpty());
+            return vertices;
+     }
+    
+    
 }
