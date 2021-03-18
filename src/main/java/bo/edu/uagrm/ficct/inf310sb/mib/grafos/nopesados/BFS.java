@@ -71,16 +71,16 @@ public class BFS {
     return recorrido;
     }
     
-    public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
+ /*   public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
         controlMarcados.desmarcarTodos();
-       // List<List<Integer>> listasDeAdyacencias= grafo.listasDeAdyacencias;
-         //controlMarcados= new UtilsRecorridos(grafo.cantidadDeVertices());
          int verticeIni=0;
          Queue<Integer> cola = new LinkedList<>();
          List<Integer> vertices= new ArrayList<>();
         cola.offer(verticeIni);
         controlMarcados.marcarVertice(verticeIni);
+        cola.offer(verticeIni);
         
+            
     do{
         int posVerticeEnTurno= cola.poll();
         //vertices.add(posVerticeEnTurno);
@@ -97,10 +97,53 @@ public class BFS {
              }
              z++;
         }
-       
-    }while(!cola.isEmpty());
-            return vertices;
+        
+           int verticeNoMarcado= definirVerticeNoMarcado(grafo,posVerticeEnTurno);
+            if(verticeNoMarcado!=posVerticeEnTurno){
+            cola.offer(verticeNoMarcado);
+            }
+        
+    }while(!cola.isEmpty());  
+            return vertices;    
      }
+    */    
     
     
+    public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
+         Queue<Integer> cola = new LinkedList<>();
+          List<Integer> vertices= new ArrayList<>();
+    controlMarcados.marcarVertice(posVertice);
+    for(int i=0;i< grafo.cantidadDeVertices();i++){
+        cola.offer(i);
+    do{
+        int posVerticeEnTurno= cola.poll();
+        recorrido.add(posVerticeEnTurno);
+        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
+        for(Integer posVerticeAdyacente: adyacentesEnTurno){
+            int z= posVerticeAdyacente;
+            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
+            cola.add(posVerticeAdyacente);
+            controlMarcados.marcarVertice(posVerticeAdyacente);
+            }
+        }
+        }while(!cola.isEmpty());
+                
+            if(controlMarcados.estaMarcado(posVertice)){
+            vertices.add(i);
+            }
+            controlMarcados.desmarcarTodos();
+        }
+           return vertices; 
+        }
+    private int definirVerticeNoMarcado(Grafo unGrafo,int verticeDeProceso){
+       while( verticeDeProceso<unGrafo.cantidadDeVertices()) {
+        if (controlMarcados.estaMarcado(verticeDeProceso)==true){
+            verticeDeProceso++;
+        }else{
+        break;
+        }
+        }
+       return verticeDeProceso;
+       }
+       
 }

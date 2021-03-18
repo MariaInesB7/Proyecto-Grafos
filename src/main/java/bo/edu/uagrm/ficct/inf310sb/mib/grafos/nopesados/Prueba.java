@@ -23,11 +23,6 @@ public class Prueba {
     public static void main(String[] argumentos) 
             throws ExcepcionNroVerticesInvalido_1, ExcepcionNroVerticesInvalido,ExcepcionAristaYaExiste
         {
-        
-       
-        
-     
-      
         MetodosPracticoGrafo metodoGrafo= new MetodosPracticoGrafo();
         Grafo  grafo1= new Grafo(6);
        Grafo  grafo2= new Grafo(6);
@@ -41,17 +36,7 @@ public class Prueba {
         grafo1.insertarArista(1,1);
         grafo1.eliminarArista(2, 5);
       //  grafo1.eliminarArista(1, 3);
-      
-   /*
-         System.out.println("# VERTICES: "+ grafo1.cantidadDeVertices());
-        System.out.println(" BFS grafo: "+ grafo1.recorridoBFS(grafo1, 0) );
-        System.out.println(" DFS grafo: "+ grafo1.recorridoDFS(grafo1,0) );
-       
-      System.out.println("CantDeIslas grafo:" + metodoGrafo.cantDeIslas(grafo1));
-   
-       System.out.println("Tiene ciclo: "+ metodoGrafo.hayCiclo(grafo1,5) );
-       System.out.println("Vertices que tienen ciclo: "+ metodoGrafo.verticesConCiclo(grafo1) );
-      */
+     
       
       Digrafo digrafo1= new Digrafo(7);   
      
@@ -70,27 +55,11 @@ public class Prueba {
        digrafo2.insertarArista(2, 3);
        digrafo2.insertarArista(3, 1);
        
-       Digrafo digrafo3= new Digrafo(5);
-       digrafo3.insertarArista(0, 1);
-       digrafo3.insertarArista(0, 3);
-       digrafo3.insertarArista(1, 4);
-       digrafo3.insertarArista(2, 1);
-       digrafo3.insertarArista(2, 4);
        
-       MetodosPracticoDigrafo digrafo= new MetodosPracticoDigrafo();
-       /*System.out.println("CantDeIslas Digrafo: "+ digrafo.cantIslasDi(digrafo1));
-       System.out.println("BFS digarfo"+ digrafo1.recorridoBFS(digrafo1, 0));
-       System.out.println("DFS digrafo"+ digrafo1.recorridoDFS(digrafo1, 0));*/
        
-     /*  int n= digrafo2.cantidadDeVertices();
-       
-       int matrizAdyacencias[][]= digrafo.matrizDeAdyacencia(digrafo2);
-       System.out.println("Matriz de adyacencias"); 
-        digrafo.imprimirMatriz(matrizAdyacencias,n);*/
-       
+       MetodosPracticoDigrafo digrafo= new MetodosPracticoDigrafo(); 
       //Practico Grafos
       System.out.println("Practico Grafos");
-      
     //Estudiante: Maria Ines Barrios Barrientos         Registro: 218006403
     /*1. Para un grafo dirigido implementar un método o clase que sea capas de retornar los 
     componentes de las islas que existen en dicho digrafo */
@@ -100,8 +69,7 @@ public class Prueba {
     System.out.println("2. Tiene ciclo: "+ digrafo.hayCiclo(digrafo1) );
     /*3. Para un grafo dirigido implementar un algoritmo para encontrar si es débilmente conexo
     */
-    
-      
+   
      System.out.println("3. Es debilmente conexo: "+ digrafo.esDebilmenteConexo(digrafo2) );
      
     /*4.. Para un grafo no dirigido implementar un algoritmo para encontrar que en que vértices del 
@@ -117,9 +85,7 @@ public class Prueba {
        System.out.println("6.CantDeIslas digrafo: "+ digrafo.cantIslasDi(digrafo1));
       /* 7. Para un grafo dirigido implementar el algoritmo de Wharshall, que luego muestre entre que 
         vértices hay camino */
-        //int n= digrafo2.cantidadDeVertices();
        
-      // int matriz[][]= digrafo.matrizDeAdyacencia(digrafo2);
        System.out.println("7. Warshall"); 
        digrafo.algoritmoWarshall(digrafo2);
       /* Para un grafo dirigido usando la implementación del algoritmo de Floyd-Wharsall encontrar 
@@ -133,13 +99,28 @@ public class Prueba {
     fuertemente conectado, C, de un grafo G, como el mayor subconjunto de vértices C (que es 
     un subconjunto de los vértices del grafo G) tal que para cada pareja de vértices v,w
     pertenecen a C tenemos una ruta desde v hasta w y una ruta desde w hasta v.
-    */
-      
+    */ 
       /*16. Para un grafo dirigido solo usando como base la lógica de un recorrido (dfs o bfs) encuentre 
         desde que vértices se puede llegar a un vértice a
       */
-      BFS bfs = new BFS(digrafo3, 0);
-      System.out.println("16.Caminos:"+ bfs.caminosAVertice(digrafo3, 1));
+      Digrafo digrafo3= new Digrafo(5);
+       digrafo3.insertarArista(0, 1);
+       digrafo3.insertarArista(0, 3);
+       digrafo3.insertarArista(1, 4);
+       digrafo3.insertarArista(2, 1);
+       digrafo3.insertarArista(2, 4);
+      digrafo3.insertarArista(3, 1);
+      System.out.println("16.Caminos:"+ digrafo.caminosAVertice(digrafo3, 1));
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       

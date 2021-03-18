@@ -86,16 +86,13 @@ public class MetodosPracticoDigrafo extends Digrafo {
         listaIslas.add(new ArrayList<>());
         }
        dfs= new DFS(grafo, verticeDeProceso);
-     //  for(int i= verticeDeProceso; i<grafo.cantidadDeVertices();i++)
+
        while(verticeDeProceso<grafo.cantidadDeVertices()){
        dfs.continuarDFS(verticeDeProceso);
-        
-         verticesDeLasIslas(numIsla, listaIslas,grafo.cantidadDeVertices(),componentesYaMarcados);
+         verticesDeLasIslas(numIsla, listaIslas,grafo.cantidadDeVertices(),
+                        componentesYaMarcados,verticeDeProceso);
        if(dfs.controlMarcados.estanTodosMarcados()){
-       // numIsla++;
-        //verticesDeLasIslas(numIsla,listaIslas,grafo.cantidadDeVertices());
-       //verticeDeProceso++;
-       //verticesDeLasIslas(numIsla, listaIslas.get(numIsla),grafo.cantidadDeVertices());
+       
        return listaIslas;
        }
       
@@ -104,20 +101,16 @@ public class MetodosPracticoDigrafo extends Digrafo {
           if(verticeDeProceso<0){
         numIsla++;
         verticeDeProceso= definirVerticeNoMarcado(grafo, 0);
-        
-        }else{
-          List<Integer>listaABorrar= listaIslas.get(numIsla);
-          listaABorrar.clear();
-           componentesYaMarcados.clear();   
-          }
+        }
        }
        return listaIslas;
     }
       public void verticesDeLasIslas(int numIslas,List<List<Integer>>islas,
-                                          int cantVertices,List<Integer> componentesYaMarcados ){
+                                          int cantVertices,List<Integer> componentesYaMarcados,
+                                          int verticeDeProceso ){
       List<Integer> componenteIsla=  islas.get(numIslas);
     
-        for(int i=0;i< cantVertices; i++ ){
+        for(int i=verticeDeProceso;i< cantVertices; i++ ){
             if (dfs.controlMarcados.estaMarcado(i)&& componentesYaMarcados.indexOf(i)<0){
         componenteIsla.add(i);
         componentesYaMarcados.add(i);
@@ -196,7 +189,10 @@ public class MetodosPracticoDigrafo extends Digrafo {
      }
      this.imprimirMatriz(matrizDigrafo, columnas);
      }
-     
+     public List<Integer> caminosAVertice(Digrafo digrafo,int posVertice){ 
+         BFS bfs= new BFS(digrafo,posVertice);
+         return bfs.caminosAVertice(digrafo, posVertice);
+     }
      
      /*
        public List<Integer> caminosAVertice(int posVertice){ 
