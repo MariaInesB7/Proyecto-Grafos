@@ -136,6 +136,7 @@ public class Prueba {
       */
       BFS bfs = new BFS(digrafo3, 0);
       System.out.println("16.Caminos:"+ bfs.caminosAVertice(digrafo3, 1));
+      System.out.println("16.Caminos:");
     }
     
 
