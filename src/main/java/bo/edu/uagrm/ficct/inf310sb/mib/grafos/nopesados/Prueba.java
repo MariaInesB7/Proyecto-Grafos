@@ -88,7 +88,7 @@ public class Prueba {
        
        System.out.println("7. Warshall"); 
        digrafo.algoritmoWarshall(digrafo2);
-      /* Para un grafo dirigido usando la implementación del algoritmo de Floyd-Wharsall encontrar 
+      /*8. Para un grafo dirigido usando la implementación del algoritmo de Floyd-Wharsall encontrar 
         los caminos de costo mínimo entre un vértice a y el resto. Mostrar los costos y cuáles son 
         los caminos*/
       System.out.println("8.Floyd Warshall"); 
