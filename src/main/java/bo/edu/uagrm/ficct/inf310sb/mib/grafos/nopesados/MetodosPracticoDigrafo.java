@@ -194,24 +194,30 @@ public class MetodosPracticoDigrafo extends Digrafo {
          return bfs.caminosAVertice(digrafo, posVertice);
      }
      
-     /*
-       public List<Integer> caminosAVertice(int posVertice){ 
-         UtilsRecorridos controlMarcados= new UtilsRecorridos(this.cantidadDeVertices());
-         Queue<Integer> cola = new LinkedList<>();
-        cola.offer(posVertice);
-        controlMarcados.marcarVertice(posVertice);
-    do{
-        int posVerticeEnTurno= cola.poll();
-        recorrido.add(posVerticeEnTurno);
-        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
-        for(Integer posVerticeAdyacente: adyacentesEnTurno){
-            int z= posVerticeAdyacente;
-            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
-            cola.add(posVerticeAdyacente);
-            controlMarcados.marcarVertice(posVerticeAdyacente);
-            }
+     public List<Integer> componentesConexos(Digrafo digrafo){
+         List<Integer> componentesConexos= new ArrayList<>();
+         List<List<Integer>> listaDeRecorridosDFS=
+                                        this.listaDeRecorridosDFS(digrafo);
+        for (int i=0;i < digrafo.cantidadDeVertices();i++ ){
+         List<Integer> listaRecorrido= listaDeRecorridosDFS.get(i);
+       //  listaRecorrido.remove(i);
+        List<Integer> caminos= this.caminosAVertice(digrafo, i);
+        for(int j=0; j< caminos.size();j++){
+        if (listaRecorrido.get(j+1)==caminos.get(j)){
+        componentesConexos.add(i);
         }
-    }while(!cola.isEmpty());
+        }
+        } 
+     return componentesConexos;
      }
-     */
+    
+     
+     public List<List<Integer>> listaDeRecorridosDFS(Digrafo digrafo){ 
+     List<List<Integer>> listaDeRecorridosDFS=new ArrayList<>();
+     for(int i=0;i<digrafo.cantidadDeVertices();i++ ){
+         DFS dfs= new DFS(digrafo,i);
+        listaDeRecorridosDFS.add(dfs.elRecorrido2());
+     }
+     return listaDeRecorridosDFS;
+     }
 }

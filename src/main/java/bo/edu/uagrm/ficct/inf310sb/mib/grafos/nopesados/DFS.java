@@ -17,6 +17,7 @@ import java.util.Queue;
 public class DFS {
      // private List<Boolean> marcados;
     private List<Integer> recorrido;
+    private List<Integer> recorrido2;
     private Grafo grafo;
     protected UtilsRecorridos controlMarcados;
     public DFS (Grafo unGrafo, int posVerticePartida){
@@ -28,18 +29,7 @@ public class DFS {
         continuarDFS(posVerticePartida);
        
     }
-    /*
-    private void desmarcar Todos(){
-     marcados = new ArrayList<>();
-     recorrido = new ArrayList<>();
-     for (int i=0; i<grafo.cantidadDeVertices();i++){
-     marcados.add(Boolean.FALSE);
-     }
-    }
-    private void marcarVertice(int posVertice){
-        marcados.set(posVertice, Boolean.TRUE);
-    }
-    */
+    
     public  void continuarDFS(int posVertice){
         controlMarcados.marcarVertice(posVertice);
         recorrido.add(posVertice);
@@ -50,11 +40,7 @@ public class DFS {
             }
         }
     }
-    /*
-    private boolean estaMarcado(int posVertice){     
-        return marcados.get(posVertice);
-    }
-    */
+    
     public boolean hayCaminoA(int posVertice){
         grafo.validarVertice(posVertice);
         return controlMarcados.estaMarcado(posVertice);
@@ -63,7 +49,9 @@ public class DFS {
     public Iterable <Integer> elRecorrido(){
     return recorrido;
     }  
-    
+    public List <Integer> elRecorrido2(){
+    return recorrido2;
+    } 
     public boolean hayCaminoATodos(){
         return controlMarcados.estanTodosMarcados();
     }

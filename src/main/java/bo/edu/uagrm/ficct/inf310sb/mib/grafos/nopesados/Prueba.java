@@ -100,6 +100,14 @@ public class Prueba {
     un subconjunto de los vértices del grafo G) tal que para cada pareja de vértices v,w
     pertenecen a C tenemos una ruta desde v hasta w y una ruta desde w hasta v.
     */ 
+      digrafo2.insertarVertice();
+      digrafo2.insertarArista(1, 3);
+      digrafo2.insertarArista(3, 4);
+      digrafo2.insertarArista(4, 3);
+      digrafo2.insertarArista(1, 4);
+      digrafo2.insertarArista(4, 1);
+      System.out.println("9. Componentes conexos: "+digrafo.componentesConexos(digrafo2));
+      
       /*16. Para un grafo dirigido solo usando como base la lógica de un recorrido (dfs o bfs) encuentre 
         desde que vértices se puede llegar a un vértice a
       */
@@ -124,7 +132,7 @@ public class Prueba {
       
       
       
-      GrafoPesado grafoP=new GrafoPesado(3);
+     /* GrafoPesado grafoP=new GrafoPesado(3);
     
         grafoP.insertarArista(0,1,5);
         System.out.println(grafoP.listaDeAdyacencias);
@@ -136,7 +144,7 @@ public class Prueba {
         
           AdyacenteConPeso  listaPeso= listasDeAdy.get(0);
            System.out.println( listaPeso.getPeso());
-          //listaPeso.getPeso();
+          //listaPeso.getPeso();*/
     }
   
 }

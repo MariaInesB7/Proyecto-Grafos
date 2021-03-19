@@ -70,6 +70,44 @@ public class BFS {
     public Iterable <Integer> elRecorrido(){
     return recorrido;
     }
+      public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
+         Queue<Integer> cola = new LinkedList<>();
+          List<Integer> vertices= new ArrayList<>();
+    controlMarcados.marcarVertice(posVertice);
+    for(int i=0;i< grafo.cantidadDeVertices();i++){
+        cola.offer(i);
+    do{
+        int posVerticeEnTurno= cola.poll();
+        recorrido.add(posVerticeEnTurno);
+        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
+        for(Integer posVerticeAdyacente: adyacentesEnTurno){
+            int z= posVerticeAdyacente;
+            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
+            cola.add(posVerticeAdyacente);
+            controlMarcados.marcarVertice(posVerticeAdyacente);
+            }
+        }
+        }while(!cola.isEmpty());
+                
+            if(controlMarcados.estaMarcado(posVertice)){
+            vertices.add(i);
+            }
+            controlMarcados.desmarcarTodos();
+        }
+           return vertices; 
+        }
+    private int definirVerticeNoMarcado(Grafo unGrafo,int verticeDeProceso){
+       while( verticeDeProceso<unGrafo.cantidadDeVertices()) {
+        if (controlMarcados.estaMarcado(verticeDeProceso)==true){
+            verticeDeProceso++;
+        }else{
+        break;
+        }
+        }
+       return verticeDeProceso;
+       }
+       
+    
     
  /*   public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
         controlMarcados.desmarcarTodos();
@@ -109,41 +147,5 @@ public class BFS {
     */    
     
     
-    public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
-         Queue<Integer> cola = new LinkedList<>();
-          List<Integer> vertices= new ArrayList<>();
-    controlMarcados.marcarVertice(posVertice);
-    for(int i=0;i< grafo.cantidadDeVertices();i++){
-        cola.offer(i);
-    do{
-        int posVerticeEnTurno= cola.poll();
-        recorrido.add(posVerticeEnTurno);
-        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
-        for(Integer posVerticeAdyacente: adyacentesEnTurno){
-            int z= posVerticeAdyacente;
-            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
-            cola.add(posVerticeAdyacente);
-            controlMarcados.marcarVertice(posVerticeAdyacente);
-            }
-        }
-        }while(!cola.isEmpty());
-                
-            if(controlMarcados.estaMarcado(posVertice)){
-            vertices.add(i);
-            }
-            controlMarcados.desmarcarTodos();
-        }
-           return vertices; 
-        }
-    private int definirVerticeNoMarcado(Grafo unGrafo,int verticeDeProceso){
-       while( verticeDeProceso<unGrafo.cantidadDeVertices()) {
-        if (controlMarcados.estaMarcado(verticeDeProceso)==true){
-            verticeDeProceso++;
-        }else{
-        break;
-        }
-        }
-       return verticeDeProceso;
-       }
-       
+  
 }
