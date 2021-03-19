@@ -17,7 +17,7 @@ import java.util.Queue;
 public class DFS {
      // private List<Boolean> marcados;
     private List<Integer> recorrido;
-    private List<Integer> recorrido2;
+    //private List<Integer> recorrido2;
     private Grafo grafo;
     protected UtilsRecorridos controlMarcados;
     public DFS (Grafo unGrafo, int posVerticePartida){
@@ -50,7 +50,7 @@ public class DFS {
     return recorrido;
     }  
     public List <Integer> elRecorrido2(){
-    return recorrido2;
+    return recorrido;
     } 
     public boolean hayCaminoATodos(){
         return controlMarcados.estanTodosMarcados();

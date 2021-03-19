@@ -78,7 +78,7 @@ public class BFS {
         cola.offer(i);
     do{
         int posVerticeEnTurno= cola.poll();
-        recorrido.add(posVerticeEnTurno);
+        //recorrido.add(posVerticeEnTurno);
         Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
         for(Integer posVerticeAdyacente: adyacentesEnTurno){
             int z= posVerticeAdyacente;
@@ -89,7 +89,7 @@ public class BFS {
         }
         }while(!cola.isEmpty());
                 
-            if(controlMarcados.estaMarcado(posVertice)){
+            if(controlMarcados.estaMarcado(posVertice)&& posVertice!=i){
             vertices.add(i);
             }
             controlMarcados.desmarcarTodos();

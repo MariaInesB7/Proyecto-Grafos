@@ -196,27 +196,25 @@ public class MetodosPracticoDigrafo extends Digrafo {
      
      public List<Integer> componentesConexos(Digrafo digrafo){
          List<Integer> componentesConexos= new ArrayList<>();
-         List<List<Integer>> listaDeRecorridosDFS=
+          List<List<Integer>> listaDeRecorridosDFS=
                                         this.listaDeRecorridosDFS(digrafo);
-        for (int i=0;i < digrafo.cantidadDeVertices();i++ ){
+         int y= listaDeRecorridosDFS.size();
+        for (int i=0;i <y ;i++ ){
          List<Integer> listaRecorrido= listaDeRecorridosDFS.get(i);
-       //  listaRecorrido.remove(i);
+        // listaRecorrido.remove(i);
         List<Integer> caminos= this.caminosAVertice(digrafo, i);
-        for(int j=0; j< caminos.size();j++){
-        if (listaRecorrido.get(j+1)==caminos.get(j)){
-        componentesConexos.add(i);
-        }
-        }
+        
         } 
      return componentesConexos;
      }
     
      
      public List<List<Integer>> listaDeRecorridosDFS(Digrafo digrafo){ 
-     List<List<Integer>> listaDeRecorridosDFS=new ArrayList<>();
+     List<List<Integer>> listaDeRecorridosDFS= new ArrayList<>();
      for(int i=0;i<digrafo.cantidadDeVertices();i++ ){
-         DFS dfs= new DFS(digrafo,i);
-        listaDeRecorridosDFS.add(dfs.elRecorrido2());
+          dfs= new DFS(digrafo,i);
+      List<Integer> recorrido= dfs.elRecorrido2();
+        listaDeRecorridosDFS.add(recorrido);
      }
      return listaDeRecorridosDFS;
      }

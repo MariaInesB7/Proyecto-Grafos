@@ -106,7 +106,7 @@ public class Prueba {
       digrafo2.insertarArista(4, 3);
       digrafo2.insertarArista(1, 4);
       digrafo2.insertarArista(4, 1);
-      System.out.println("9. Componentes conexos: "+digrafo.componentesConexos(digrafo2));
+      //System.out.println("9. Componentes conexos: "+digrafo.componentesConexos(digrafo2));
       
       /*16. Para un grafo dirigido solo usando como base la lógica de un recorrido (dfs o bfs) encuentre 
         desde que vértices se puede llegar a un vértice a
