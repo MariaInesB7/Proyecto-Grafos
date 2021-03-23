@@ -122,29 +122,47 @@ public class Prueba {
       
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-     /* GrafoPesado grafoP=new GrafoPesado(3);
+      DigrafoPesado grafoP1=new DigrafoPesado(5);
     
-        grafoP.insertarArista(0,1,5);
-        System.out.println(grafoP.listaDeAdyacencias);
-        List<AdyacenteConPeso> listasDeAdy= grafoP.listaDeAdyacencias.get(0);
-        List<AdyacenteConPeso> listasDeAdy2= grafoP.listaDeAdyacencias.get(1);
-        List<AdyacenteConPeso> listasDeAdy3= grafoP.listaDeAdyacencias.get(0);
-        //System.out.println("h"+ listasDeAdy.get(0));
-       
+        grafoP1.insertarArista(0,1,10);
+        grafoP1.insertarArista(0,4,4);
+        grafoP1.insertarArista(1,3,2);
+        grafoP1.insertarArista(2,3,1);
+        grafoP1.insertarArista(4,1,5);
+        grafoP1.insertarArista(3,4,7);
+        grafoP1.insertarArista(2,1,3);
         
-          AdyacenteConPeso  listaPeso= listasDeAdy.get(0);
-           System.out.println( listaPeso.getPeso());
-          //listaPeso.getPeso();*/
+        MetodosDigrafoPesado digrafoPesado = new MetodosDigrafoPesado();
+        int n=grafoP1.cantidadDeVertices();
+        double matriz[][];
+             matriz=   digrafoPesado.matrizDeAdyacencia(grafoP1);
+              System.out.println("Matriz Grafo Pesado: ");
+             digrafoPesado.imprimirMatriz(matriz, n);
+      
+        
+      
+     /*  10. Para un grafo dirigido pesado implementar el algoritmo de Dijkstra que muestre cual es el 
+    camino de costo mínimo entre un vértice a y b y cual el costo */
+    //System.out.println("peso " + digrafoPesado.pesoArista(0,3 , grafoP1));
+     System.out.println("Recorrido= "+ digrafoPesado.algoritmoDijkstra(0, 1, grafoP1));
+     
+     /*11. Para un grafo dirigido pesado implementar el algoritmo de Dijkstra que muestre con que 
+        vértices hay caminos de costo mínimo partiendo desde un vértice v, con qué costo y cuáles 
+        son los caminos.
+        */
+      digrafoPesado.calc(n, 0, grafoP1);
+     
+      
+     /* 12. Para un grafo no dirigido pesado implementar el algoritmo de Kruskal que muestre cual es 
+        el grafo encontrado por el algoritmo*/
+     
+     
+     /*  13. Para un grafo no dirigido pesado implementar el algoritmo de Prim que muestre cual es el 
+        grafo encontrado por el algoritmo*/
+     
+    /*    14. Para un grafo dirigido implementar al algoritmo de ordenamiento topológico. Debe mostrar 
+        cual es el orden de los vértices según este algoritmo. */ 
+     
     }
   
 }

@@ -24,7 +24,7 @@ public class Digrafo extends Grafo {
 
     @Override
     public void insertarArista(int posVerticeOrigen, int posVerticeDestino) throws ExcepcionNroVerticesInvalido_1 {
-        //super.insertarArista(posVerticeOrigen, posVerticeDestino); //To change body of generated methods, choose Tools | Templates.
+       
         super.validarVertice(posVerticeOrigen);
 		super.validarVertice(posVerticeDestino);
                 if (super.existeAdyacencia(posVerticeOrigen, posVerticeDestino)){

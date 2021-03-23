@@ -5,25 +5,26 @@
  */
 package bo.edu.uagrm.ficct.inf310sb.mib.grafos.pesado;
 
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionAristaNoExiste;
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionAristaYaExiste;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionNroVerticesInvalido;
-import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionNroVerticesInvalido_1;
-import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.*;
-
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author HP 240 G5
  */
-public class GrafoPesado {
+public class DigrafoPesado {
+    
      public List<List<AdyacenteConPeso>> listaDeAdyacencias;
 
-    public GrafoPesado() {
+    public DigrafoPesado() {
         this.listaDeAdyacencias = new ArrayList<>();
 
     }
 
-    public GrafoPesado(int nroDeVerticesInicial) throws ExcepcionNroVerticesInvalido {
+    public DigrafoPesado(int nroDeVerticesInicial) throws ExcepcionNroVerticesInvalido {
         if(nroDeVerticesInicial < 0){
             throw new ExcepcionNroVerticesInvalido();
         }
@@ -73,10 +74,7 @@ public class GrafoPesado {
         }
         List<AdyacenteConPeso> adyacenciasDelOrigen = this.listaDeAdyacencias.get(posVerticeOrigen);
         adyacenciasDelOrigen.add(new AdyacenteConPeso(posVerticeDestino, costo));
-        if(posVerticeOrigen != posVerticeDestino){
-            List<AdyacenteConPeso> adyacenciasDelDestino = this.listaDeAdyacencias.get(posVerticeDestino);
-            adyacenciasDelDestino.add(new AdyacenteConPeso(posVerticeOrigen, costo));
-        }
+ 
     }
 
     public  boolean existeAdyacencia(int posVerticeOrigen, int posVerticeDestino){
@@ -133,12 +131,7 @@ public class GrafoPesado {
         List<AdyacenteConPeso> adyacenciasDelOrigen = this.listaDeAdyacencias.get(posVerticeOrigen);
         int posicion = adyacenciasDelOrigen.indexOf(posVerticeDestino);
         adyacenciasDelOrigen.remove(posicion);
-        if(posVerticeOrigen != posVerticeDestino){
-            List<AdyacenteConPeso> adyacenciasDelDestino = this.listaDeAdyacencias.get(posVerticeOrigen);
-            posicion = adyacenciasDelDestino.indexOf(posVerticeDestino);
-            adyacenciasDelDestino.remove(posicion);
-        }
+        
     }
     
-
 }

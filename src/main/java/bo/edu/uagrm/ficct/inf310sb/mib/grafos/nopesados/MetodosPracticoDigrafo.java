@@ -23,8 +23,7 @@ public class MetodosPracticoDigrafo extends Digrafo {
     }
      
        private int definirVerticeNoMarcado(Digrafo unGrafo,int verticeDeProceso){
-         //dfs= new DFS(unGrafo, verticeDeProceso);
-         //UtilsRecorridos controlMarcados= new UtilsRecorridos(unGrafo.cantidadDeVertices());
+         
        while( verticeDeProceso<unGrafo.cantidadDeVertices()) {
         if (dfs.controlMarcados.estaMarcado(verticeDeProceso)==true){
             verticeDeProceso++;
@@ -39,13 +38,13 @@ public class MetodosPracticoDigrafo extends Digrafo {
        int cantIslas=0;
        int verticeDeProceso=0;
        dfs= new DFS(grafo, verticeDeProceso);
-     //  for(int i= verticeDeProceso; i<grafo.cantidadDeVertices();i++)
+    
        while(verticeDeProceso<grafo.cantidadDeVertices()){
        dfs.continuarDFS(verticeDeProceso);
        if(dfs.controlMarcados.estanTodosMarcados()){
         cantIslas++;
         return cantIslas;
-       //verticeDeProceso++;
+       
        
        }
          verticeDeProceso=verticeNoMarcadoConAdyacenteMarcado
@@ -73,7 +72,7 @@ public class MetodosPracticoDigrafo extends Digrafo {
         }
         VerticeDeProceso++;
         }
-       return -1;// no econtro verticeNoMarcado
+       return -1;// no encontro verticeNoMarcado
     }
     
       public List<List<Integer>> componentesDeIslasDigrafo(Digrafo grafo){
@@ -217,5 +216,21 @@ public class MetodosPracticoDigrafo extends Digrafo {
         listaDeRecorridosDFS.add(recorrido);
      }
      return listaDeRecorridosDFS;
+     }
+     
+     public List<Integer> gradosDeEntrada(Digrafo digrafo){
+      List<Integer> gradosDeEntrada= new ArrayList<>();   
+     for(int i=0; i<digrafo.cantidadDeVertices();i++){
+     int grado= digrafo.gradoDeEntrada(i);
+        gradosDeEntrada.add(grado);
+     }
+        return gradosDeEntrada;
+     }
+     public List<Integer> ordenamientoTopologico(Digrafo digrafo){
+     Queue<Integer> cola = new LinkedList<>();
+     List<Integer> gradosDeEntrada= this.gradosDeEntrada(digrafo);
+     for (int i=0; i<gradosDeEntrada.size(); i++){
+     
+     }
      }
 }
