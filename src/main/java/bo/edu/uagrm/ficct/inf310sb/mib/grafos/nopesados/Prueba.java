@@ -55,15 +55,15 @@ public class Prueba {
        digrafo2.insertarArista(2, 3);
        digrafo2.insertarArista(3, 1);
        
-        Digrafo digrafo31= new Digrafo(6);
-       digrafo31.insertarArista(1, 2);
+        Digrafo digrafo31= new Digrafo(5);
+       digrafo31.insertarArista(0, 1);
+       digrafo31.insertarArista(0, 2 );
+       digrafo31.insertarArista(0, 3);
+       digrafo31.insertarArista(0, 4);
        digrafo31.insertarArista(1, 3);
-       digrafo31.insertarArista(1, 5);
-       digrafo31.insertarArista(1, 4);
+       digrafo31.insertarArista(3, 4);
        digrafo31.insertarArista(2, 4);
-       digrafo31.insertarArista(4, 5);
-       digrafo31.insertarArista(3, 5);
-       digrafo31.insertarArista(3, 2);
+       digrafo31.insertarArista(2, 1);
        
        MetodosPracticoDigrafo digrafo= new MetodosPracticoDigrafo(); 
       //Practico Grafos
