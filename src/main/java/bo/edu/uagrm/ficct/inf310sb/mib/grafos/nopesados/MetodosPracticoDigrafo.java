@@ -231,31 +231,37 @@ public class MetodosPracticoDigrafo extends Digrafo {
      List<Integer> ordenamiento= new ArrayList<>();
      List<Integer> gradosDeEntrada= this.gradosDeEntrada(digrafo);
      List<Integer> adyacencias;
-     for (int i=0; i<gradosDeEntrada.size(); i++){
-     if(gradosDeEntrada.get(i)==0){
-        cola.add(i);
-     }
-     }
+     controlMarcados= new UtilsRecorridos(digrafo.cantidadDeVertices());
+     controlMarcados.desmarcarTodos();
+     //while(!controlMarcados.estanTodosMarcados()){
     
+     for (int i=0; i<gradosDeEntrada.size(); i++){
+     if(gradosDeEntrada.get(i)==0&& !controlMarcados.estaMarcado(i)){
+        cola.add(i);
+        controlMarcados.marcarVertice(i);
+     }
+     }
+     
      while(!cola.isEmpty()){
         int vertice= cola.poll();
         ordenamiento.add(vertice);
         adyacencias= digrafo.listasDeAdyacencias.get(vertice);
         for (int i=0; i<adyacencias.size(); i++){
            int posAdyacente= adyacencias.get(i);
-           int grado= gradosDeEntrada.get(i)-1;
-           gradosDeEntrada.set(posAdyacente, grado);
-           digrafo.eliminarArista(vertice, i);
-           
-        }
-       //gradosDeEntrada= this.gradosDeEntrada(digrafo);
-        for (int i=0; i<gradosDeEntrada.size(); i++){
-         if(gradosDeEntrada.get(i)==0){
-        cola.add(gradosDeEntrada.get(i));
-         }
-         }
-        
+           int grado= gradosDeEntrada.get(i);
+           gradosDeEntrada.set(posAdyacente, grado-1);
+           digrafo.eliminarArista(vertice, posAdyacente);
+         // this.gradosDeEntrada(digrafo);
+       // }      
      }
-        return ordenamiento;
+         for (int j=0; j<gradosDeEntrada.size(); j++){
+     if(gradosDeEntrada.get(j)==0&& !controlMarcados.estaMarcado(j)){
+        cola.add(j);
+        controlMarcados.marcarVertice(j);
+     }
+     }
+       
+     }
+      return ordenamiento;
      }
 }
