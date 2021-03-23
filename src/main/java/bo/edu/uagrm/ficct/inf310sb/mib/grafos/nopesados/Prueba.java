@@ -60,10 +60,10 @@ public class Prueba {
        digrafo31.insertarArista(0, 2 );
        digrafo31.insertarArista(0, 3);
        digrafo31.insertarArista(0, 4);
-       digrafo31.insertarArista(1, 3);
+       digrafo31.insertarArista(2, 1);
        digrafo31.insertarArista(3, 4);
        digrafo31.insertarArista(2, 4);
-       digrafo31.insertarArista(2, 1);
+       digrafo31.insertarArista(1, 3);
        
        MetodosPracticoDigrafo digrafo= new MetodosPracticoDigrafo(); 
       //Practico Grafos

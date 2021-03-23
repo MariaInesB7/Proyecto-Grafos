@@ -250,12 +250,13 @@ public class MetodosPracticoDigrafo extends Digrafo {
            int posAdyacente= adyacencias.get(i);
            int grado= gradosDeEntrada.get(i);
            gradosDeEntrada.set(posAdyacente, grado-1);
-           digrafo.eliminarArista(vertice, posAdyacente);
+           //digrafo.eliminarArista(vertice, posAdyacente);
          // this.gradosDeEntrada(digrafo);
        // }      
      }
          for (int j=0; j<gradosDeEntrada.size(); j++){
      if(gradosDeEntrada.get(j)<=0&& !controlMarcados.estaMarcado(j)){
+         
         cola.add(j);
         controlMarcados.marcarVertice(j);
      }
