@@ -135,16 +135,16 @@ public class MetodosDigrafoPesado extends DigrafoPesado{
                      if(costoA>costoV+costoVA){
                          actualizarCosto(costos,adyacencia.get(i).getIndiceVertice(),costoV+costoVA);
                         
-                         int x=adyacencia.get(i).getIndiceVertice();
-                         double y=costos.get(adyacencia.get(i).getIndiceVertice());
+                         
                          actualizarPredecesores(predecesores, adyacencia.get(i).getIndiceVertice(),
                                  posMenorCosto);
                          
                      }     
             }
         }
+            
         posMenorCosto=posicionCostoMenor(costos);
-      double c= costos.get(posMenorCosto);
+      
      }
       int k=posDestino;
         while(k!=posOrigen){

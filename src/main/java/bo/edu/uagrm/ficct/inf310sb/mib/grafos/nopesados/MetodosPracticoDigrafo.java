@@ -228,9 +228,34 @@ public class MetodosPracticoDigrafo extends Digrafo {
      }
      public List<Integer> ordenamientoTopologico(Digrafo digrafo){
      Queue<Integer> cola = new LinkedList<>();
+     List<Integer> ordenamiento= new ArrayList<>();
      List<Integer> gradosDeEntrada= this.gradosDeEntrada(digrafo);
+     List<Integer> adyacencias;
      for (int i=0; i<gradosDeEntrada.size(); i++){
-     
+     if(gradosDeEntrada.get(i)==0){
+        cola.add(i);
      }
+     }
+    
+     while(!cola.isEmpty()){
+        int vertice= cola.poll();
+        ordenamiento.add(vertice);
+        adyacencias= digrafo.listasDeAdyacencias.get(vertice);
+        for (int i=0; i<adyacencias.size(); i++){
+           int posAdyacente= adyacencias.get(i);
+           int grado= gradosDeEntrada.get(i)-1;
+           gradosDeEntrada.set(posAdyacente, grado);
+           digrafo.eliminarArista(vertice, i);
+           
+        }
+       //gradosDeEntrada= this.gradosDeEntrada(digrafo);
+        for (int i=0; i<gradosDeEntrada.size(); i++){
+         if(gradosDeEntrada.get(i)==0){
+        cola.add(gradosDeEntrada.get(i));
+         }
+         }
+        
+     }
+        return ordenamiento;
      }
 }

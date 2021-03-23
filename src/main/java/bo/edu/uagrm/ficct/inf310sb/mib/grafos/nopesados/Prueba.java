@@ -55,7 +55,15 @@ public class Prueba {
        digrafo2.insertarArista(2, 3);
        digrafo2.insertarArista(3, 1);
        
-       
+        Digrafo digrafo31= new Digrafo(6);
+       digrafo31.insertarArista(1, 2);
+       digrafo31.insertarArista(1, 3);
+       digrafo31.insertarArista(1, 5);
+       digrafo31.insertarArista(1, 4);
+       digrafo31.insertarArista(2, 4);
+       digrafo31.insertarArista(4, 5);
+       digrafo31.insertarArista(3, 5);
+       digrafo31.insertarArista(3, 2);
        
        MetodosPracticoDigrafo digrafo= new MetodosPracticoDigrafo(); 
       //Practico Grafos
@@ -150,7 +158,7 @@ public class Prueba {
         vértices hay caminos de costo mínimo partiendo desde un vértice v, con qué costo y cuáles 
         son los caminos.
         */
-      digrafoPesado.calc(n, 0, grafoP1);
+     // digrafoPesado.calc(n, 0, grafoP1);
      
       
      /* 12. Para un grafo no dirigido pesado implementar el algoritmo de Kruskal que muestre cual es 
@@ -162,7 +170,7 @@ public class Prueba {
      
     /*    14. Para un grafo dirigido implementar al algoritmo de ordenamiento topológico. Debe mostrar 
         cual es el orden de los vértices según este algoritmo. */ 
-     
+        System.out.println("Ordenamiento topologico: " + digrafo.ordenamientoTopologico(digrafo31));
     }
   
 }
