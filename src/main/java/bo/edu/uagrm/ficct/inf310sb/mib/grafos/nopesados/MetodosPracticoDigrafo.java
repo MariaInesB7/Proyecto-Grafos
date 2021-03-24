@@ -239,6 +239,7 @@ public class MetodosPracticoDigrafo extends Digrafo {
      if(gradosDeEntrada.get(i)==0&& !controlMarcados.estaMarcado(i)){
         cola.add(i);
         controlMarcados.marcarVertice(i);
+        break;
      }
      }
      

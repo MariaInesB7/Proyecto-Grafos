@@ -88,6 +88,7 @@ public class Prueba {
             hay en el grafo
      */
        System.out.println("5. CantDeIslas grafo:" + metodoGrafo.cantDeIslas(grafo1));
+       
      /*6. Para un grafo dirigido implementar un algoritmo para encontrar el número de islas que hay 
         en el grafo*/ 
        System.out.println("6.CantDeIslas digrafo: "+ digrafo.cantIslasDi(digrafo1));

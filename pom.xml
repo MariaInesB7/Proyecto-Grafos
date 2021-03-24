@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>bo.edu.uagrm.ficct.inf310sb.mib</groupId>
-	<artifactId>grafos</artifactId>
+	<artifactId>Proyectografos</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
@@ -34,4 +34,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+    <name>ProyectoGrafos</name>
 </project>
