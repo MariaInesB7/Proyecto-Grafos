@@ -118,6 +118,10 @@ public class MetodosPracticoGrafo extends Grafo {
         }
        return -1;// no encontro verticeNoMarcado
     }
+      public boolean verificarCaminoEntreVertices(int verticeOrigen, int verticeDestino){
+      
+      return false;
+      } 
        
        
 }

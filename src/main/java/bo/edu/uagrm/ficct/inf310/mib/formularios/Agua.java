@@ -9,6 +9,7 @@ package bo.edu.uagrm.ficct.inf310.mib.formularios;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.*;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.excepciones.ExcepcionNroVerticesInvalido;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.*;
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.pesado.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -30,6 +31,7 @@ public class Agua extends javax.swing.JFrame {
     }
      MetodosPracticoGrafo  metodos=new MetodosPracticoGrafo();
         Grafo grafoAgua=new Grafo(17);
+        GrafoPesado grafoAPesado= new GrafoPesado(17);
        BFS  bfs;
        DFS  dfs; 
      
@@ -61,7 +63,33 @@ public class Agua extends javax.swing.JFrame {
         
             JOptionPane.showMessageDialog(null,"Grafo creado exitosamente");
      }
+    public void crearGrafoAPesado()throws ExcepcionNroVerticesInvalido, ExcepcionNroVerticesInvalido_1, ExcepcionAristaYaExiste{
+        grafoAPesado.insertarArista(0,1 ,650 );
+        grafoAPesado.insertarArista(0,6,780);
+        grafoAPesado.insertarArista(0,2,350 );
+        grafoAPesado.insertarArista(1,4,470 );
+        grafoAPesado.insertarArista(4,6,105 );
+        grafoAPesado.insertarArista(6,5,170 );
+        grafoAPesado.insertarArista(5,3, 80);
+        grafoAPesado.insertarArista(2,3,300 );
+        
+        grafoAPesado.insertarArista(7,8,90 );
+        grafoAPesado.insertarArista(7,9 ,120);
+        grafoAPesado.insertarArista(7,10,100 );
+        grafoAPesado.insertarArista(7,11,115 );
+        
+        grafoAPesado.insertarArista(12,13 ,470 );
+        grafoAPesado.insertarArista(12,14 ,430);
+        grafoAPesado.insertarArista(12,15 ,310 );
+        grafoAPesado.insertarArista(14,16 ,500 );
+        grafoAPesado.insertarArista(15,16 ,70);
+        grafoAPesado.insertarArista(13,16 ,630 );
+        
+         JOptionPane.showMessageDialog(null,"Grafo pesados creado exitosamente");
     
+    }
+     
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,6 +161,11 @@ public class Agua extends javax.swing.JFrame {
         jMenu3.setText("Pesado");
 
         jMenuItem9.setText("Iniciar");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem9);
 
         jMenuItem10.setText("Nuevo Vertice");
@@ -269,6 +302,19 @@ public class Agua extends javax.swing.JFrame {
         this.jTextArea1.setText("No hay camino");
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+       
+        try {
+            crearGrafoAPesado();
+        } catch (ExcepcionNroVerticesInvalido ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExcepcionNroVerticesInvalido_1 ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExcepcionAristaYaExiste ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments

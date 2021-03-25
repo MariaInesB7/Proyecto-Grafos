@@ -171,6 +171,30 @@ public class MetodosPracticoDigrafo extends Digrafo {
      this.imprimirMatriz(matrizDigrafo, columnas);
              
      }
+     
+      public String caminoConVertice(Digrafo digrafo, int vertice){
+         String cad="";
+     int matrizDigrafo[][]= this.matrizDeAdyacencia(digrafo);
+     int columnas= digrafo.cantidadDeVertices();
+     for(int i=0; i<columnas; i++){
+         for(int j=0; j<columnas;j++){
+             for(int k=0; k<columnas; k++){
+             if(matrizDigrafo[j][k]!=1){
+             matrizDigrafo[j][k]= matrizDigrafo[j][i]&matrizDigrafo[i][k];
+             }
+             }
+         }
+     }
+        cad= cad+ "Hay camino desde el vertice "+ vertice +" con ";
+     for(int i=0; i<columnas; i++){
+          
+         if(matrizDigrafo[vertice][i]!=0){
+         cad= cad + i+ " "; 
+         }
+     }
+         return cad ;    
+     }
+     
      public void algoritmoFloydWarshall(Digrafo digrafo){
      int matrizDigrafo[][]= this.matrizDeAdyacencia(digrafo);
      int columnas= digrafo.cantidadDeVertices();

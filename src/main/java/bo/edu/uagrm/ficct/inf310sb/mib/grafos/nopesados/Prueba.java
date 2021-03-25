@@ -172,6 +172,9 @@ public class Prueba {
     /*    14. Para un grafo dirigido implementar al algoritmo de ordenamiento topológico. Debe mostrar 
         cual es el orden de los vértices según este algoritmo. */ 
         System.out.println("Ordenamiento topologico: " + digrafo.ordenamientoTopologico(digrafo31));
+        
+    /*15. Para un grafo dirigido pesado implementar el algoritmo de Ford-Fulkerson*/
+        
     }
   
 }

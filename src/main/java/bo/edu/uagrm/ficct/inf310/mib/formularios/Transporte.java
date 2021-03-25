@@ -52,6 +52,7 @@ public class Transporte extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         jMenuItem6.setText("jMenuItem6");
 
@@ -105,6 +106,14 @@ public class Transporte extends javax.swing.JFrame {
 
         jMenuItem8.setText("Caminos a un punto");
         jMenu2.add(jMenuItem8);
+
+        jMenuItem9.setText("Caminos a partir de un punto");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem9);
 
         jMenuBar1.add(jMenu2);
 
@@ -193,6 +202,13 @@ public class Transporte extends javax.swing.JFrame {
         this.jTextArea1.setText(cad);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        String vertInicio= JOptionPane.showInputDialog("Escribir desde que vertice se desea ver los posibles caminos");
+        String cad= metodosD.caminoConVertice(grafoT, Integer.parseInt(vertInicio));
+        this.jTextArea1.setText(cad);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -247,6 +263,7 @@ public class Transporte extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
