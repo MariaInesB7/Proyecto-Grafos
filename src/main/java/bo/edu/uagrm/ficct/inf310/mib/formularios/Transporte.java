@@ -13,6 +13,7 @@ import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.Grafo;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.MetodosPracticoDigrafo;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.MetodosPracticoGrafo;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.pesado.DigrafoPesado;
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.pesado.MetodosDigrafoPesado;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -140,7 +141,7 @@ public class Transporte extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Caminos a un punto");
+        jMenuItem8.setText("Rutas a un punto");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -148,7 +149,7 @@ public class Transporte extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem8);
 
-        jMenuItem9.setText("Caminos a partir de un punto");
+        jMenuItem9.setText("Ruta a partir de un punto");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -192,6 +193,7 @@ public class Transporte extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
         MetodosPracticoDigrafo  metodosD=new MetodosPracticoDigrafo();
+        MetodosDigrafoPesado  metodosDP=new MetodosDigrafoPesado();
         Digrafo grafoT=new Digrafo(13);
         DigrafoPesado grafoTPesado= new DigrafoPesado(13);
         BFS  bfs;

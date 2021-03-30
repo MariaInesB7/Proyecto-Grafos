@@ -73,51 +73,9 @@ public class MetodosDigrafoPesado extends DigrafoPesado{
     }
    
      
-     
-     public void calc(int n,int s, DigrafoPesado grafoP)
-        {
-         double matrizPesos[][];
-         matrizPesos= this.matrizDeAdyacencia(grafoP);
-         int[] marcado = new int[n];
-         int i,minpos=1,k,c;
-         double minimum;
-         double distancia[]= new double[n];
-         for(i=0;i<n;i++)
-         {  
-             marcado[i]=0; 
-                distancia[i]=matrizPesos[s][i]; 
-                
-         }
-         c=0;
-         while(c<n)
-         {
-          minimum=122000;
-          for(k=0;k<n;k++)
-          {     
-              double y=distancia[k];
-                 if(distancia[k]<minimum && marcado[k]!=1)
-              {
-               minimum=distancia[i-1];
-               minpos=i-1;
-              }
-             } 
-                   marcado[minpos]=1;
-             c++;
-             for(k=0;k<n;k++){
-              if(distancia[minpos] + matrizPesos[minpos][k] <  distancia[k] && marcado[k]!=1 )
-              distancia[k]=distancia[minpos]+matrizPesos[minpos][k];
-              
-          }   
-         } 
-         
-            for(int j=0; j<n;j++){
-            System.out.print("  "+distancia[j]);
-            }
-        }
-     
-     
-     public Stack algoritmoDijkstra(int posOrigen,int posDestino, DigrafoPesado digrafoP){
-        Stack recorrido=new Stack<>();
+  
+    public List<Integer> algoritmoDijkstra(int posOrigen,int posDestino, DigrafoPesado digrafoP){
+        List<Integer> recorrido=new Stack<>();
         List<Double> costos=inicializaCosto(digrafoP.cantidadDeVertices());
         List<Integer> predecesores=inicializaPredecesores(digrafoP.cantidadDeVertices());
         int posMenorCosto=posOrigen;
@@ -134,7 +92,6 @@ public class MetodosDigrafoPesado extends DigrafoPesado{
                     double costoVA=adyacencia.get(i).getPeso();
                      if(costoA>costoV+costoVA){
                          actualizarCosto(costos,adyacencia.get(i).getIndiceVertice(),costoV+costoVA);
-                        
                          
                          actualizarPredecesores(predecesores, adyacencia.get(i).getIndiceVertice(),
                                  posMenorCosto);
@@ -143,17 +100,27 @@ public class MetodosDigrafoPesado extends DigrafoPesado{
             }
         }
             
-        posMenorCosto=posicionCostoMenor(costos);
-      
+        posMenorCosto=posicionCostoMenor(costos);   
      }
       int k=posDestino;
+     
         while(k!=posOrigen){
             recorrido.add(k);
             k=predecesores.get(k);
         }
-        recorrido.add(posOrigen);
-        System.out.println("Costo= "+ costos.get(posMenorCosto));
+         recorrido.add(posOrigen);
+         
+        System.out.println("Costo= "+ this.costoTotal(recorrido, digrafoP));
         return recorrido; 
+     }
+     private double costoTotal(List<Integer> recorrido,DigrafoPesado digrafoP){
+      double costoTotal=0;
+     for(int i=0; i<recorrido.size()-1;i++){
+       int vertice1= recorrido.get(i);
+       int vertice2= recorrido.get(i+1);
+       costoTotal= costoTotal+ this.pesoArista(vertice2, vertice1, digrafoP);
+     }
+     return costoTotal;
      }
 
     private List<Double> inicializaCosto(int cantVertices) {
@@ -197,5 +164,7 @@ public class MetodosDigrafoPesado extends DigrafoPesado{
         }
         return costos.indexOf(menor);
     }
+    
+     
      
 }
