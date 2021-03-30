@@ -115,6 +115,7 @@ public class Agua extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -198,13 +199,21 @@ public class Agua extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setText("Verificar conexion");
+        jMenuItem5.setText("Verificar si el punto esta conectado");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem5);
+
+        jMenuItem9.setText("Conexiones con un punto");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem9);
 
         jMenuBar1.add(jMenu1);
 
@@ -355,6 +364,19 @@ public class Agua extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+       
+        //conexiones con un punto
+       String posInicio= JOptionPane.showInputDialog("Escriba el punto del cual desea ver las conexiones directas");
+       this.verticeInvalido(Integer.parseInt(posInicio));
+        if(metodos.verificarSiHayCamino(Integer.parseInt(posInicio), grafoAgua)){
+        this.jTextArea1.setText("El punto "+ posInicio+ " esta conectado con "
+                + metodos.caminosAUnVertice(Integer.parseInt(posInicio), grafoAgua));
+       }else{
+        this.jTextArea1.setText("No hay conexion que mostrar");
+        } 
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -411,6 +433,7 @@ public class Agua extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

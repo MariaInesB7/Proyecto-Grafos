@@ -123,6 +123,9 @@ public class MetodosPracticoGrafo extends Grafo {
         List<Integer> listaAdy= grafo.listasDeAdyacencias.get(vertice);
         return listaAdy.size()>0;
       } 
-       
+     public List<Integer> caminosAUnVertice(int vertice, Grafo grafo){
+     List<Integer> listaAdy= grafo.listasDeAdyacencias.get(vertice);
+     return listaAdy;
+     }  
        
 }
