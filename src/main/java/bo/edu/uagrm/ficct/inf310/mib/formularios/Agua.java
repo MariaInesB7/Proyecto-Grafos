@@ -26,7 +26,7 @@ public class Agua extends javax.swing.JFrame {
     
     public Agua()throws ExcepcionNroVerticesInvalido, ExcepcionNroVerticesInvalido_1 {
         initComponents();
-        
+        setLocationRelativeTo(null);
         
     }
      MetodosPracticoGrafo  metodos=new MetodosPracticoGrafo();

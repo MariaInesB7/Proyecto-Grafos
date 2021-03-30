@@ -30,6 +30,7 @@ public class Transporte extends javax.swing.JFrame {
      */
     public Transporte()throws ExcepcionNroVerticesInvalido, ExcepcionNroVerticesInvalido_1 {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
