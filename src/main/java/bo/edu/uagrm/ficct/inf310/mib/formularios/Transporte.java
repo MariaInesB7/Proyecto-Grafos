@@ -89,12 +89,27 @@ public class Transporte extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Nueva Conexion");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem10.setText("Eliminar Vertice");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem10);
 
         jMenuItem11.setText("Eliminar Conexión");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem11);
 
         jMenuBar1.add(jMenu1);
@@ -296,7 +311,7 @@ public class Transporte extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
     //insertar
         grafoT.insertarVertice();
-        
+        grafoTPesado.insertarVertice();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
@@ -311,6 +326,50 @@ public class Transporte extends javax.swing.JFrame {
               metodosD.verificarConexion(matrizWarshall, Integer.parseInt(vertInicio),Integer.parseInt(vertDestino)));
         
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        
+        //nuevaConexión
+          String posInicio= JOptionPane.showInputDialog("Insertar origen");
+        this.verticeInvalido(Integer.parseInt(posInicio));
+        String posDestino= JOptionPane.showInputDialog("Insertar destino");
+        this.verticeInvalido(Integer.parseInt(posDestino));
+        String peso= JOptionPane.showInputDialog("Insertar peso");
+        try {
+            grafoT.insertarArista(Integer.parseInt(posInicio),Integer.parseInt( posDestino));
+        } catch (ExcepcionNroVerticesInvalido_1 ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            grafoTPesado.insertarArista(Integer.parseInt(posInicio),
+                        Integer.parseInt( posDestino), Integer.parseInt(peso));
+        } catch (ExcepcionAristaYaExiste ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        //eliminar vertice
+          String vertice= JOptionPane.showInputDialog("Vertice a eliminar");
+        this.verticeInvalido(Integer.parseInt(vertice));
+        grafoT.eliminarVertice(Integer.parseInt(vertice));
+        grafoTPesado.eliminarVertice(Integer.parseInt(vertice));
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        //eliminar conexion
+            String posInicio= JOptionPane.showInputDialog("Insertar Origen");
+        this.verticeInvalido(Integer.parseInt(posInicio));
+        String posDestino= JOptionPane.showInputDialog("Insertar Destino");
+        this.verticeInvalido(Integer.parseInt(posDestino));
+       grafoT.eliminarArista(Integer.parseInt( posInicio), Integer.parseInt( posDestino));
+        try {
+            grafoTPesado.eliminarArista(Integer.parseInt( posInicio),
+                    Integer.parseInt( posDestino));
+        } catch (ExcepcionAristaNoExiste ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
