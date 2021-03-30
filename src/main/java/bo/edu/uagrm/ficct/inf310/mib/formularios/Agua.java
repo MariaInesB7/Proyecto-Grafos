@@ -301,10 +301,10 @@ public class Agua extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-      bfs= new BFS(grafoAgua,0);
+     
        String posInicio= JOptionPane.showInputDialog("Escriba que punto desea verificar");
        this.verticeInvalido(Integer.parseInt(posInicio));
-        if(bfs.hayCaminoA(Integer.parseInt(posInicio) )){
+        if(metodos.verificarSiHayCamino(Integer.parseInt(posInicio), grafoAgua)){
         this.jTextArea1.setText("Si hay camino");
        }else{
         this.jTextArea1.setText("No hay camino");
@@ -323,18 +323,13 @@ public class Agua extends javax.swing.JFrame {
         this.verticeInvalido(Integer.parseInt(posInicio));
         String posDestino= JOptionPane.showInputDialog("Insertar destino");
         this.verticeInvalido(Integer.parseInt(posDestino));
-        String peso= JOptionPane.showInputDialog("Insertar peso");
+       // String peso= JOptionPane.showInputDialog("Insertar peso");
         try {
             grafoAgua.insertarArista(Integer.parseInt(posInicio),Integer.parseInt( posDestino));
         } catch (ExcepcionNroVerticesInvalido_1 ex) {
             Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            grafoAPesado.insertarArista(Integer.parseInt(posInicio),
-                        Integer.parseInt( posDestino), Integer.parseInt(peso));
-        } catch (ExcepcionAristaYaExiste ex) {
-            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed

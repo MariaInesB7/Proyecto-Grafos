@@ -118,9 +118,10 @@ public class MetodosPracticoGrafo extends Grafo {
         }
        return -1;// no encontro verticeNoMarcado
     }
-      public boolean verificarCaminoEntreVertices(int verticeOrigen, int verticeDestino){
+      public boolean verificarSiHayCamino(int vertice, Grafo grafo){
       
-          return false;
+        List<Integer> listaAdy= grafo.listasDeAdyacencias.get(vertice);
+        return listaAdy.size()>0;
       } 
        
        
