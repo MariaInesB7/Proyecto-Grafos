@@ -31,7 +31,7 @@ public class Agua extends javax.swing.JFrame {
     }
      MetodosPracticoGrafo  metodos=new MetodosPracticoGrafo();
         Grafo grafoAgua=new Grafo(17);
-        GrafoPesado grafoAPesado= new GrafoPesado(17);
+       
        BFS  bfs;
        DFS  dfs; 
      
@@ -63,32 +63,7 @@ public class Agua extends javax.swing.JFrame {
         
             
      }
-    public void crearGrafoAPesado()throws ExcepcionNroVerticesInvalido, ExcepcionNroVerticesInvalido_1, ExcepcionAristaYaExiste{
-        grafoAPesado.insertarArista(0,1 ,650 );
-        grafoAPesado.insertarArista(0,6,780);
-        grafoAPesado.insertarArista(0,2,350 );
-        grafoAPesado.insertarArista(1,4,470 );
-        grafoAPesado.insertarArista(4,6,105 );
-        grafoAPesado.insertarArista(6,5,170 );
-        grafoAPesado.insertarArista(5,3, 80);
-        grafoAPesado.insertarArista(2,3,300 );
-        
-        grafoAPesado.insertarArista(7,8,90 );
-        grafoAPesado.insertarArista(7,9 ,120);
-        grafoAPesado.insertarArista(7,10,100 );
-        grafoAPesado.insertarArista(7,11,115 );
-        
-        grafoAPesado.insertarArista(12,13 ,470 );
-        grafoAPesado.insertarArista(12,14 ,430);
-        grafoAPesado.insertarArista(12,15 ,310 );
-        grafoAPesado.insertarArista(14,16 ,500 );
-        grafoAPesado.insertarArista(15,16 ,70);
-        grafoAPesado.insertarArista(13,16 ,630 );
-        
-         
-    
-    }
-     
+   
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -287,15 +262,7 @@ public class Agua extends javax.swing.JFrame {
         } catch (ExcepcionNroVerticesInvalido_1 ex) {
             Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
         }
-        try {
-            crearGrafoAPesado();
-        } catch (ExcepcionNroVerticesInvalido ex) {
-            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ExcepcionNroVerticesInvalido_1 ex) {
-            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ExcepcionAristaYaExiste ex) {
-            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         JOptionPane.showMessageDialog(null,"Grafo creado exitosamente");
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -323,7 +290,7 @@ public class Agua extends javax.swing.JFrame {
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
        //nuevo vertice
        grafoAgua.insertarVertice();
-       grafoAPesado.insertarVertice();
+      
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -346,7 +313,7 @@ public class Agua extends javax.swing.JFrame {
         String vertice= JOptionPane.showInputDialog("Vertice a eliminar");
         this.verticeInvalido(Integer.parseInt(vertice));
         grafoAgua.eliminarVertice(Integer.parseInt(vertice));
-        grafoAPesado.eliminarVertice(Integer.parseInt(vertice));
+       
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
@@ -356,12 +323,7 @@ public class Agua extends javax.swing.JFrame {
         String posDestino= JOptionPane.showInputDialog("Insertar Destino");
         this.verticeInvalido(Integer.parseInt(posDestino));
        grafoAgua.eliminarArista(Integer.parseInt( posInicio), Integer.parseInt( posDestino));
-        try {
-            grafoAPesado.eliminarArista(Integer.parseInt( posInicio),
-                    Integer.parseInt( posDestino));
-        } catch (ExcepcionAristaNoExiste ex) {
-            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
