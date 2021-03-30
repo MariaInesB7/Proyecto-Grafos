@@ -12,6 +12,8 @@ import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.Digrafo;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.Grafo;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.MetodosPracticoDigrafo;
 import bo.edu.uagrm.ficct.inf310sb.mib.grafos.nopesados.MetodosPracticoGrafo;
+import bo.edu.uagrm.ficct.inf310sb.mib.grafos.pesado.DigrafoPesado;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -47,25 +49,28 @@ public class Transporte extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
 
         jMenuItem6.setText("jMenuItem6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\UniSem2-2020\\Programas ED2\\Proyecto\\Graficos\\MutunTransporte.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\UniSem2-2020\\Programas ED2\\Proyecto\\Graficos\\mutunTransporte2.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jMenu1.setText("Basico");
+        jMenu1.setText("Grafo");
 
         jMenuItem1.setText("Iniciar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -75,11 +80,22 @@ public class Transporte extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Insertar");
+        jMenuItem2.setText("Nuevo Vertice");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setText("Eliminar");
+        jMenuItem3.setText("Nueva Conexion");
         jMenu1.add(jMenuItem3);
+
+        jMenuItem10.setText("Eliminar Vertice");
+        jMenu1.add(jMenuItem10);
+
+        jMenuItem11.setText("Eliminar Conexión");
+        jMenu1.add(jMenuItem11);
 
         jMenuBar1.add(jMenu1);
 
@@ -93,7 +109,7 @@ public class Transporte extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem4);
 
-        jMenuItem5.setText("Recorridos");
+        jMenuItem5.setText("Ruta entre dos puntos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -102,9 +118,19 @@ public class Transporte extends javax.swing.JFrame {
         jMenu2.add(jMenuItem5);
 
         jMenuItem7.setText("Recorrido desde un punto");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem7);
 
         jMenuItem8.setText("Caminos a un punto");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuItem9.setText("Caminos a partir de un punto");
@@ -114,6 +140,14 @@ public class Transporte extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem9);
+
+        jMenuItem12.setText("Verificar conexion");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem12);
 
         jMenuBar1.add(jMenu2);
 
@@ -125,10 +159,10 @@ public class Transporte extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,17 +171,18 @@ public class Transporte extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
         MetodosPracticoDigrafo  metodosD=new MetodosPracticoDigrafo();
         Digrafo grafoT=new Digrafo(13);
+        DigrafoPesado grafoTPesado= new DigrafoPesado(13);
         BFS  bfs;
         DFS  dfs; 
         
-     private void CrearDigrafoT() throws ExcepcionNroVerticesInvalido_1{
+     private void CrearDigrafoT() throws ExcepcionNroVerticesInvalido_1, ExcepcionAristaYaExiste{
          grafoT.insertarArista(0, 1);
         grafoT.insertarArista(2, 1);
         grafoT.insertarArista(1, 3);
@@ -167,19 +202,47 @@ public class Transporte extends javax.swing.JFrame {
          grafoT.insertarArista(10,9);
          grafoT.insertarArista(11,9);
          
-         JOptionPane.showMessageDialog(null,"Grafo dirigido creado exitosamente");
-
+         grafoTPesado.insertarArista(0, 1, 120);
+         grafoTPesado.insertarArista(2,1,100);
+         grafoTPesado.insertarArista(1,3 ,118 );
+         grafoTPesado.insertarArista(1,6 ,80 );
+         grafoTPesado.insertarArista(0,3, 40);
+         grafoTPesado.insertarArista(2,5,20);
+         grafoTPesado.insertarArista(4,3,100);
+         grafoTPesado.insertarArista(4,8,90);
+         grafoTPesado.insertarArista(6,5,35);
+         grafoTPesado.insertarArista(6,7,70);
+         grafoTPesado.insertarArista(7,8,25);
+         
+         grafoTPesado.insertarArista(9,12 ,310 );
+         grafoTPesado.insertarArista(9,11,430);
+         grafoTPesado.insertarArista(9,10,350);
+         grafoTPesado.insertarArista(12,9,310 );
+         grafoTPesado.insertarArista(11,9 ,430 );
+         grafoTPesado.insertarArista(10,9,350);
+         
 }
+    private void verticeInvalido(int vertice){
+        if(vertice>= grafoT.cantidadDeVertices()){
+        JOptionPane.showMessageDialog(null,"Vertice invalido. Insertar un vertice menor a "
+                                        + grafoT.cantidadDeVertices());
+        }
+        
+    }
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         try {
-            // TODO add your handling code here:
+            try {
+                // TODO add your handling code here:
 
-            CrearDigrafoT();
+                CrearDigrafoT();
+            } catch (ExcepcionAristaYaExiste ex) {
+                Logger.getLogger(Transporte.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (ExcepcionNroVerticesInvalido_1 ex) {
             Logger.getLogger(Transporte.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        JOptionPane.showMessageDialog(null,"Grafo creado exitosamente");
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -195,8 +258,7 @@ public class Transporte extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-
+        //ruta entre 2 vertices
         String cad= "Recorrido DFS "+ "\n"+ metodosD.recorridoDFS(grafoT, 0)+"\n";
         cad= cad+ "Recorrido BFS "+ "\n"+ metodosD.recorridoBFS(grafoT, 0) +"\n";
         this.jTextArea1.setText(cad);
@@ -205,9 +267,50 @@ public class Transporte extends javax.swing.JFrame {
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
         String vertInicio= JOptionPane.showInputDialog("Escribir desde que vertice se desea ver los posibles caminos");
+        this.verticeInvalido(Integer.parseInt(vertInicio));
         String cad= metodosD.caminoConVertice(grafoT, Integer.parseInt(vertInicio));
         this.jTextArea1.setText(cad);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+      
+        //caminos desde un punto
+         String posInicio= JOptionPane.showInputDialog("Escribe desde que posicion desea iniciar el recorrido");
+            this.verticeInvalido(Integer.parseInt(posInicio));
+          bfs= new BFS(grafoT,Integer.parseInt(posInicio));
+          dfs= new DFS(grafoT, Integer.parseInt(posInicio));
+        this.jTextArea1.setText("El recorrido BFS es: "+ bfs.elRecorrido()+ "\n"
+                        + "El recorrido DFS es: "+ dfs.elRecorrido()+"\n");
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+       //caminos a un punto
+       String posVertice= JOptionPane.showInputDialog("Escribe el vertice del"
+                                          + " cual desea ver los posibles caminos");
+       this.verticeInvalido(Integer.parseInt(posVertice));
+       List<Integer> caminos=  metodosD.caminosAVertice(grafoT,Integer.parseInt(posVertice));
+       this.jTextArea1.setText("Los posibles caminos a " + posVertice +" son: " + caminos);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    //insertar
+        grafoT.insertarVertice();
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+      
+        //verificar conexion
+        String vertInicio= JOptionPane.showInputDialog("Escribir el vertice de origen");
+        this.verticeInvalido(Integer.parseInt(vertInicio));
+        String vertDestino= JOptionPane.showInputDialog("Escribir el vertice de destino");
+        this.verticeInvalido(Integer.parseInt(vertDestino));
+        int [][] matrizWarshall= metodosD.matrizWarshall(grafoT);
+        this.jTextArea1.setText(
+              metodosD.verificarConexion(matrizWarshall, Integer.parseInt(vertInicio),Integer.parseInt(vertDestino)));
+        
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +359,9 @@ public class Transporte extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

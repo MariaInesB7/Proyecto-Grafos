@@ -78,7 +78,7 @@ public class BFS {
         cola.offer(i);
     do{
         int posVerticeEnTurno= cola.poll();
-        //recorrido.add(posVerticeEnTurno);
+       
         Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
         for(Integer posVerticeAdyacente: adyacentesEnTurno){
             int z= posVerticeAdyacente;
@@ -107,45 +107,7 @@ public class BFS {
        return verticeDeProceso;
        }
        
-    
-    
- /*   public List<Integer> caminosAVertice(Digrafo grafo, int posVertice){ 
-        controlMarcados.desmarcarTodos();
-         int verticeIni=0;
-         Queue<Integer> cola = new LinkedList<>();
-         List<Integer> vertices= new ArrayList<>();
-        cola.offer(verticeIni);
-        controlMarcados.marcarVertice(verticeIni);
-        cola.offer(verticeIni);
-        
-            
-    do{
-        int posVerticeEnTurno= cola.poll();
-        //vertices.add(posVerticeEnTurno);
-        Iterable<Integer> adyacentesEnTurno= grafo.adyacentesDeVertice(posVerticeEnTurno);
-        List<Integer> adyacentesVertice= grafo.listasDeAdyacencias.get(posVerticeEnTurno);
-        int z=0;
-        for(Integer posVerticeAdyacente: adyacentesEnTurno){
-            if(!controlMarcados.estaMarcado(posVerticeAdyacente)){
-            cola.add(posVerticeAdyacente);
-            controlMarcados.marcarVertice(posVerticeAdyacente);
-            }
-            if(posVertice==adyacentesVertice.get(z)|| posVertice==posVerticeEnTurno ){
-                 vertices.add(posVerticeEnTurno);
-             }
-             z++;
-        }
-        
-           int verticeNoMarcado= definirVerticeNoMarcado(grafo,posVerticeEnTurno);
-            if(verticeNoMarcado!=posVerticeEnTurno){
-            cola.offer(verticeNoMarcado);
-            }
-        
-    }while(!cola.isEmpty());  
-            return vertices;    
-     }
-    */    
-    
+   
     
   
 }

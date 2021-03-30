@@ -129,8 +129,6 @@ public class Prueba {
       digrafo3.insertarArista(3, 1);
       System.out.println("16.Caminos:"+ digrafo.caminosAVertice(digrafo3, 1));
       
-      
-      
       DigrafoPesado grafoP1=new DigrafoPesado(5);
     
         grafoP1.insertarArista(0,1,10);

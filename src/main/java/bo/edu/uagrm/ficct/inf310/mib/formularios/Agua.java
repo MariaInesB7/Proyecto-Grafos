@@ -61,7 +61,7 @@ public class Agua extends javax.swing.JFrame {
      
      
         
-            JOptionPane.showMessageDialog(null,"Grafo creado exitosamente");
+            
      }
     public void crearGrafoAPesado()throws ExcepcionNroVerticesInvalido, ExcepcionNroVerticesInvalido_1, ExcepcionAristaYaExiste{
         grafoAPesado.insertarArista(0,1 ,650 );
@@ -85,7 +85,7 @@ public class Agua extends javax.swing.JFrame {
         grafoAPesado.insertarArista(15,16 ,70);
         grafoAPesado.insertarArista(13,16 ,630 );
         
-         JOptionPane.showMessageDialog(null,"Grafo pesados creado exitosamente");
+         
     
     }
      
@@ -110,12 +110,6 @@ public class Agua extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -134,7 +128,7 @@ public class Agua extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\UniSem2-2020\\Programas ED2\\Proyecto\\Graficos\\mutunAgua2.jpg")); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jMenu2.setText("No Pesado");
+        jMenu2.setText("Grafo");
 
         jMenuItem6.setText("Iniciar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -145,42 +139,38 @@ public class Agua extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6);
 
         jMenuItem7.setText("Nuevo Vertice");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem7);
 
         jMenuItem8.setText("Nueva Conexion");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuItem12.setText("Eliminar Vertice");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem12);
 
         jMenuItem13.setText("Eliminar Conexión");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem13);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Pesado");
-
-        jMenuItem9.setText("Iniciar");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem9);
-
-        jMenuItem10.setText("Nuevo Vertice");
-        jMenu3.add(jMenuItem10);
-
-        jMenuItem11.setText("Nueva Conexion");
-        jMenu3.add(jMenuItem11);
-
-        jMenuItem14.setText("Eliminar Vertice");
-        jMenu3.add(jMenuItem14);
-
-        jMenuItem15.setText("Eliminar Conexión");
-        jMenu3.add(jMenuItem15);
-
-        jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Menu");
 
@@ -227,9 +217,9 @@ public class Agua extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +238,14 @@ public class Agua extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    
-    
+    private void verticeInvalido(int vertice){
+        if(vertice>= grafoAgua.cantidadDeVertices()){
+        JOptionPane.showMessageDialog(null,"Vertice invalido. Insertar un vertice menor a "
+                                        + grafoAgua.cantidadDeVertices());
+        }
+        
+        
+    }
     
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
@@ -275,17 +272,27 @@ public class Agua extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
 
-            crearGrafoAgua();
+            crearGrafoAgua();          
         } catch (ExcepcionNroVerticesInvalido ex) {
             Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ExcepcionNroVerticesInvalido_1 ex) {
             Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            crearGrafoAPesado();
+        } catch (ExcepcionNroVerticesInvalido ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExcepcionNroVerticesInvalido_1 ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ExcepcionAristaYaExiste ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(null,"Grafo creado exitosamente");
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
        String posInicio= JOptionPane.showInputDialog("Escribe desde que posicion desea iniciar el recorrido");
-       
+       this.verticeInvalido(Integer.parseInt(posInicio));
           bfs= new BFS(grafoAgua,Integer.parseInt(posInicio));
           dfs= new DFS(grafoAgua, Integer.parseInt(posInicio));
         this.jTextArea1.setText("El recorrido BFS es: "+ bfs.elRecorrido()+ "\n"
@@ -296,6 +303,7 @@ public class Agua extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
       bfs= new BFS(grafoAgua,0);
        String posInicio= JOptionPane.showInputDialog("Escriba que punto desea verificar");
+       this.verticeInvalido(Integer.parseInt(posInicio));
         if(bfs.hayCaminoA(Integer.parseInt(posInicio) )){
         this.jTextArea1.setText("Si hay camino");
        }else{
@@ -303,18 +311,54 @@ public class Agua extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+       //nuevo vertice
+       grafoAgua.insertarVertice();
+       grafoAPesado.insertarVertice();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
        
+        String posInicio= JOptionPane.showInputDialog("Insertar origen");
+        this.verticeInvalido(Integer.parseInt(posInicio));
+        String posDestino= JOptionPane.showInputDialog("Insertar destino");
+        this.verticeInvalido(Integer.parseInt(posDestino));
+        String peso= JOptionPane.showInputDialog("Insertar peso");
         try {
-            crearGrafoAPesado();
-        } catch (ExcepcionNroVerticesInvalido ex) {
-            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+            grafoAgua.insertarArista(Integer.parseInt(posInicio),Integer.parseInt( posDestino));
         } catch (ExcepcionNroVerticesInvalido_1 ex) {
             Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            grafoAPesado.insertarArista(Integer.parseInt(posInicio),
+                        Integer.parseInt( posDestino), Integer.parseInt(peso));
         } catch (ExcepcionAristaYaExiste ex) {
             Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // eliminar vertice
+        String vertice= JOptionPane.showInputDialog("Vertice a eliminar");
+        this.verticeInvalido(Integer.parseInt(vertice));
+        grafoAgua.eliminarVertice(Integer.parseInt(vertice));
+        grafoAPesado.eliminarVertice(Integer.parseInt(vertice));
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        // eliminar arista
+        String posInicio= JOptionPane.showInputDialog("Insertar Origen");
+        this.verticeInvalido(Integer.parseInt(posInicio));
+        String posDestino= JOptionPane.showInputDialog("Insertar Destino");
+        this.verticeInvalido(Integer.parseInt(posDestino));
+       grafoAgua.eliminarArista(Integer.parseInt( posInicio), Integer.parseInt( posDestino));
+        try {
+            grafoAPesado.eliminarArista(Integer.parseInt( posInicio),
+                    Integer.parseInt( posDestino));
+        } catch (ExcepcionAristaNoExiste ex) {
+            Logger.getLogger(Agua.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,15 +405,10 @@ public class Agua extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -377,7 +416,6 @@ public class Agua extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

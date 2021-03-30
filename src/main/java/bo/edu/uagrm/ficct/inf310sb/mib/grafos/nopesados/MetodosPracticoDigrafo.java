@@ -17,9 +17,11 @@ import java.util.Queue;
 public class MetodosPracticoDigrafo extends Digrafo {
     private DFS dfs;
     private UtilsRecorridos controlMarcados;
+  
     //
     public MetodosPracticoDigrafo(){
          UtilsRecorridos controlMarcados;
+         
     }
      
        private int definirVerticeNoMarcado(Digrafo unGrafo,int verticeDeProceso){
@@ -289,5 +291,29 @@ public class MetodosPracticoDigrafo extends Digrafo {
        
      }
       return ordenamiento;
+     }
+     
+     public int[][] matrizWarshall(Digrafo digrafo){
+     int matrizDigrafo[][]= this.matrizDeAdyacencia(digrafo);
+     int columnas= digrafo.cantidadDeVertices();
+     for(int i=0; i<columnas; i++){
+         for(int j=0; j<columnas;j++){
+             for(int k=0; k<columnas; k++){
+             if(matrizDigrafo[j][k]!=1){
+             matrizDigrafo[j][k]= matrizDigrafo[j][i]&matrizDigrafo[i][k];
+             }
+             }
+         }
+     }
+     return matrizDigrafo;
+             
+     }
+     public String verificarConexion(int[][] matrizWarshall ,int posInicio, int posDestino){
+     String cad= "hay camino entre "+ posInicio+ " y "+ posDestino;
+     int conexion= matrizWarshall[posInicio][posDestino];
+     if (conexion==1){
+         return "Si "+ cad;
+     }
+     return "No "+ cad;
      }
 }
